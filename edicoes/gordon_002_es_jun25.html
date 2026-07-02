@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gordon — Edición #002</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #ddd; display: flex; justify-content: center; padding: 40px 16px; }
+
+.nl {
+  font-family: 'Inter', sans-serif;
+  background: #F1EFE8;
+  color: #2C2C2A;
+  max-width: 680px;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.nl-header { background: #F1EFE8; padding: 28px 32px 20px; border-bottom: 2px solid #2C2C2A; }
+.nl-header-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.nl-logo-name { font-size: 32px; font-weight: 700; letter-spacing: 0.18em; color: #2C2C2A; line-height: 1; }
+.nl-logo-line { display: flex; align-items: center; margin-top: 5px; height: 4px; }
+.nl-logo-solid { width: 72px; height: 3px; background: #185FA5; }
+.nl-logo-dotted { width: 36px; height: 3px; border-top: 3px dotted #185FA5; }
+.nl-tagline { margin-top: 6px; font-size: 12px; color: #888780; letter-spacing: 0.04em; }
+.nl-tagline em { font-style: italic; color: #185FA5; font-weight: 500; }
+.nl-meta-right { text-align: right; font-size: 11px; color: #888780; line-height: 1.8; letter-spacing: 0.02em; }
+.nl-meta-right a { color: #185FA5; text-decoration: none; font-weight: 500; }
+.nl-social-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
+.nl-social-pill { font-size: 10px; color: #888780; border: 1px solid #888780; border-radius: 3px; padding: 1px 6px; letter-spacing: 0.06em; font-weight: 500; }
+.nl-meta-bar { display: flex; gap: 24px; margin-top: 14px; padding-top: 12px; border-top: 0.5px solid #D3D1C7; font-size: 11px; color: #888780; letter-spacing: 0.05em; }
+.nl-meta-bar span { font-weight: 600; color: #2C2C2A; }
+
+.nl-markets { background: #2C2C2A; padding: 12px 32px; display: grid; grid-template-columns: repeat(6, 1fr); }
+.nl-mkt-item { text-align: center; border-right: 0.5px solid #444441; padding: 0 6px; }
+.nl-mkt-item:last-child { border-right: none; }
+.nl-mkt-label { font-size: 8px; letter-spacing: 0.07em; color: #888780; font-weight: 600; text-transform: uppercase; }
+.nl-mkt-val { font-size: 14px; font-weight: 700; color: #F1EFE8; line-height: 1.2; margin-top: 2px; }
+.nl-mkt-chg { font-size: 10px; font-weight: 500; margin-top: 1px; }
+.up { color: #4CAF82; }
+.dn { color: #E24B4A; }
+.nt { color: #888780; }
+
+.nl-body { padding: 0 32px; }
+.nl-section-label { font-size: 9px; letter-spacing: 0.18em; font-weight: 700; color: #888780; text-transform: uppercase; padding: 22px 0 10px; display: flex; align-items: center; gap: 10px; }
+.nl-section-label::after { content: ''; flex: 1; height: 0.5px; background: #D3D1C7; }
+.nl-intro { padding: 0 0 20px; font-size: 15px; line-height: 1.75; color: #2C2C2A; border-bottom: 0.5px solid #D3D1C7; }
+
+.nl-ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.nl-ab-col-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+.nl-ab-col-title.altas { color: #4CAF82; }
+.nl-ab-col-title.baixas { color: #E24B4A; }
+.nl-ab-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; border-radius: 4px; margin-bottom: 4px; background: #fff; border: 0.5px solid #D3D1C7; }
+.nl-ab-ticker { font-size: 12px; font-weight: 700; color: #2C2C2A; letter-spacing: 0.06em; }
+.nl-ab-name { font-size: 11px; color: #888780; margin-left: 6px; }
+.nl-ab-pct { font-size: 13px; font-weight: 700; }
+.nl-ab-pct.up { color: #4CAF82; }
+.nl-ab-pct.dn { color: #E24B4A; }
+
+.nl-block { padding: 0 0 24px; border-bottom: 0.5px solid #D3D1C7; }
+.nl-block-title { font-size: 20px; font-weight: 700; line-height: 1.25; color: #2C2C2A; margin-bottom: 12px; }
+.nl-block-title .accent { color: #185FA5; }
+.nl-block-text { font-size: 14px; line-height: 1.75; color: #2C2C2A; }
+.nl-block-text p { margin-bottom: 12px; }
+.nl-block-text p:last-child { margin-bottom: 0; }
+
+.nl-impact { margin-top: 16px; background: #EBF3FB; border-left: 3px solid #185FA5; border-radius: 0 4px 4px 0; padding: 14px 16px; }
+.nl-impact-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #185FA5; margin-bottom: 6px; }
+.nl-impact-text { font-size: 13px; line-height: 1.65; color: #185FA5; opacity: 0.85; }
+
+.nl-company-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.nl-company-badge { background: #2C2C2A; color: #F1EFE8; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; white-space: nowrap; }
+.nl-company-ticker-big { font-size: 22px; font-weight: 700; color: #185FA5; letter-spacing: 0.06em; }
+
+.nl-fio-arrow { display: flex; flex-direction: column; gap: 4px; margin: 14px 0; padding: 14px 16px; background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; }
+.nl-fio-step { font-size: 13px; color: #2C2C2A; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.nl-fio-arrow-icon { color: #185FA5; font-weight: 700; font-size: 12px; margin-top: 1px; flex-shrink: 0; }
+
+.nl-watchlist { display: flex; flex-direction: column; gap: 8px; }
+.nl-watch-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; }
+.nl-watch-date { font-size: 10px; font-weight: 700; color: #185FA5; letter-spacing: 0.08em; min-width: 32px; padding-top: 2px; }
+.nl-watch-text { font-size: 13px; color: #2C2C2A; line-height: 1.5; }
+
+.nl-conceito { background: #2C2C2A; border-radius: 4px; padding: 22px 24px; margin-top: 4px; }
+.nl-conceito-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #888780; margin-bottom: 10px; }
+.nl-conceito-term { font-size: 22px; font-weight: 700; color: #F1EFE8; letter-spacing: 0.04em; margin-bottom: 4px; }
+.nl-conceito-term-en { font-size: 12px; color: #185FA5; font-weight: 500; letter-spacing: 0.06em; margin-bottom: 14px; }
+.nl-conceito-def { font-size: 14px; line-height: 1.75; color: #D3D1C7; }
+.nl-conceito-def p { margin-bottom: 10px; }
+.nl-conceito-def p:last-child { margin-bottom: 0; }
+.nl-conceito-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.nl-conceito-card { background: #3a3a38; border-radius: 4px; padding: 12px 14px; }
+.nl-conceito-card-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888780; margin-bottom: 5px; }
+.nl-conceito-card-val { font-size: 13px; color: #F1EFE8; line-height: 1.5; }
+.nl-conceito-impact { margin-top: 16px; background: #1a3a5c; border-left: 3px solid #185FA5; border-radius: 0 4px 4px 0; padding: 12px 14px; }
+.nl-conceito-impact-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #185FA5; margin-bottom: 5px; }
+.nl-conceito-impact-text { font-size: 13px; line-height: 1.65; color: #a8c8e8; }
+
+.nl-footer { padding: 20px 32px 28px; border-top: 0.5px solid #D3D1C7; margin-top: 8px; }
+.nl-footer-logo { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: #2C2C2A; margin-bottom: 8px; }
+.nl-footer-text { font-size: 11px; color: #888780; line-height: 1.65; }
+.nl-footer-links { margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+.nl-footer-links a { font-size: 11px; color: #185FA5; text-decoration: none; letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+<div class="nl">
+
+  <div class="nl-header">
+    <div class="nl-header-top">
+      <div>
+        <div class="nl-logo-name">GORDON</div>
+        <div class="nl-logo-line">
+          <div class="nl-logo-solid"></div>
+          <div class="nl-logo-dotted"></div>
+        </div>
+        <div class="nl-tagline">Wall Street &nbsp;<em>en tus manos</em></div>
+      </div>
+      <div class="nl-meta-right">
+        <div><a href="https://somosgordon.com">somosgordon.com</a></div>
+        <div class="nl-social-row">
+          <span class="nl-social-pill">@INSTAGRAM</span>
+          <span class="nl-social-pill">@TWITTER</span>
+          <span class="nl-social-pill">@LINKEDIN</span>
+        </div>
+      </div>
+    </div>
+    <div class="nl-meta-bar">
+      EDICIÓN <span>#002</span> &nbsp;·&nbsp; JUEVES, 25 JUN 2026 &nbsp;·&nbsp; SEMANA DEL 18–24 JUN &nbsp;·&nbsp; LECTURA <span>~7 MIN</span>
+    </div>
+  </div>
+
+  <!-- MARKETS -->
+  <div class="nl-markets">
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">S&P 500</div>
+      <div class="nl-mkt-val">7.354</div>
+      <div class="nl-mkt-chg dn">−0,6% semana</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">NASDAQ 100</div>
+      <div class="nl-mkt-val">25.620</div>
+      <div class="nl-mkt-chg up">+1,1% semana</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso MXN</div>
+      <div class="nl-mkt-val">$19,68</div>
+      <div class="nl-mkt-chg dn">−1,3%</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso ARS</div>
+      <div class="nl-mkt-val">$1.092</div>
+      <div class="nl-mkt-chg dn">−0,6%</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso CLP</div>
+      <div class="nl-mkt-val">$973</div>
+      <div class="nl-mkt-chg nt">estable</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">Petróleo Brent</div>
+      <div class="nl-mkt-val">US$ 73</div>
+      <div class="nl-mkt-chg dn">−19% en mes</div>
+    </div>
+  </div>
+
+  <div class="nl-body">
+
+    <div class="nl-section-label">Esta semana</div>
+    <div class="nl-intro">
+      El petróleo se derrumbó de US$ 91 a US$ 73 en pocos días — el mayor alivio de precios desde el inicio de la guerra con Irán. Micron sorprendió al mercado con resultados históricos. Y el S&P 500 sigue en modo zig-zag: tech recupera, el resto va para donde puede. Dos historias que parecen opuestas pero son parte del mismo cuadro. Eso destrinchamos hoy.
+    </div>
+
+    <div class="nl-section-label">Altas &amp; Bajas</div>
+    <div class="nl-block">
+      <div class="nl-ab-grid">
+        <div>
+          <div class="nl-ab-col-title altas">▲ Mayores Alzas</div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">MU</span><span class="nl-ab-name">Micron</span></div><div class="nl-ab-pct up">+16,2%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">NVDA</span><span class="nl-ab-name">Nvidia</span></div><div class="nl-ab-pct up">+5,8%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">AMD</span><span class="nl-ab-name">AMD</span></div><div class="nl-ab-pct up">+4,1%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">AMZN</span><span class="nl-ab-name">Amazon</span></div><div class="nl-ab-pct up">+3,7%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">META</span><span class="nl-ab-name">Meta</span></div><div class="nl-ab-pct up">+2,9%</div></div>
+        </div>
+        <div>
+          <div class="nl-ab-col-title baixas">▼ Mayores Bajas</div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">XOM</span><span class="nl-ab-name">ExxonMobil</span></div><div class="nl-ab-pct dn">−5,2%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">CVX</span><span class="nl-ab-name">Chevron</span></div><div class="nl-ab-pct dn">−4,8%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">OXY</span><span class="nl-ab-name">Occidental</span></div><div class="nl-ab-pct dn">−4,1%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">SLB</span><span class="nl-ab-name">Schlumberger</span></div><div class="nl-ab-pct dn">−3,6%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">VZ</span><span class="nl-ab-name">Verizon</span></div><div class="nl-ab-pct dn">−2,8%</div></div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">La rotación fue clara esta semana: el petróleo barato hizo daño a las empresas de energía pero alivió la presión inflacionaria global. Para quien tiene ETFs tecnológicos, Micron fue el catalizador para un rebote saludable. Para quien tiene exposición a energía, fue una semana complicada. El mercado sigue dividido entre el optimismo de la IA y la incertidumbre macroeconómica.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Resumen de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-block-title">El petróleo se desplomó — <span class="accent">y eso cambia todo</span></div>
+      <div class="nl-block-text">
+        <p>El Brent cayó a US$ 73, su nivel más bajo desde antes del inicio del conflicto con Irán en febrero. La caída fue impulsada por señales de que el acuerdo entre EE.UU. e Irán firmado el 19 de junio en Ginebra está avanzando, y el tráfico de barcos en el Estrecho de Ormuz empieza a recuperarse lentamente.</p>
+        <p>Esta caída tiene implicaciones directas para la inflación americana. El PCE de mayo ya había venido más alto de lo esperado (4,1% interanual). Con el petróleo bajando, el escenario para el segundo semestre cambia: menos presión de precios energéticos puede abrir, eventualmente, la puerta para que la Fed sea menos agresiva. Eventualmente — no mañana.</p>
+        <p>Por ahora, el mercado de bonos sigue reflejando la postura hawkish del dot plot de Warsh. Los rendimientos del Treasury a 2 años siguen altos, y el dólar sigue fuerte. Pero el primer hilo de oxígeno apareció esta semana.</p>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Si la tendencia del petróleo se consolida, la presión sobre las monedas latinoamericanas puede ceder un poco en el segundo semestre. Para quien está pensando en dolarizar patrimonio, el momento sigue siendo razonable — pero la "ventana perfecta" puede estar cerrándose gradualmente si la inflación baja y el dólar pierde tracción. Aportes graduales siguen siendo la estrategia más sensata.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Empresa de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-company-header">
+        <span class="nl-company-badge">Empresa de la semana</span>
+        <span class="nl-company-ticker-big">MU — Micron Technology</span>
+      </div>
+      <div class="nl-block-title">Micron publicó resultados históricos: <span class="accent">+325% en el año</span></div>
+      <div class="nl-block-text">
+        <p>Micron reportó resultados de su tercer trimestre fiscal el jueves, y la reacción fue inmediata: la acción subió más del 16% en el mismo día. El mercado de memoria de alta velocidad (HBM), que alimenta los procesadores de IA de Nvidia, creció más del 50% año a año. La demanda de chips de memoria para centros de datos de IA sigue siendo voraz.</p>
+        <p>La acción acumula más de 325% de ganancia en los últimos 12 meses — un número que pocos analistas habrían predicho a principios de año. Pero el rally no es magia: la demanda estructural de memoria para IA es real y creciente, y Micron tiene una posición competitiva sólida frente a Samsung y SK Hynix en los segmentos premium.</p>
+        <p>Lo más importante: los resultados de Micron le devolvieron confianza al sector de chips después del susto de Broadcom la semana pasada. El contexto sigue siendo positivo para el ciclo de inversión en infraestructura de IA.</p>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Quien tiene ETFs como QQQ o SOXX (semiconductores) capturó parte del rally de Micron sin necesidad de elegir el activo correcto. Para eso sirven exactamente los ETFs sectoriales. Si no tenés exposición a chips, los resultados de esta semana confirman que el sector tiene fundamentos sólidos más allá del ruido de corto plazo.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Hilo Conductor</div>
+    <div class="nl-block">
+      <div class="nl-block-title">Por qué el petróleo a US$ 73 <span class="accent">es buena noticia para tu portafolio</span></div>
+      <div class="nl-block-text">
+        <p>Hace una semana, el Brent estaba a US$ 91 y la Fed tenía el dedo en el gatillo de una suba de tasas. Esta semana, el petróleo cayó casi 20% desde los máximos del conflicto. Seguí el hilo de por qué eso importa más allá de las estaciones de servicio:</p>
+      </div>
+      <div class="nl-fio-arrow">
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Petróleo más barato → menos inflación energética en EE.UU. → PCE empieza a ceder</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Inflación que baja → menor probabilidad de que la Fed suba tasas → rendimientos de bonos bajan</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Rendimientos más bajos → valuaciones de tech se expanden → rally en Nasdaq</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>En LATAM: Petrobras e YPF sufren (exportan crudo y les pagan menos); los importadores de insumos respiran</span></div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Si la caída del petróleo se sostiene, la narrativa de "dólar fuerte para siempre" se debilita. Eso no significa que el peso mexicano, argentino o chileno se recuperen de golpe — los problemas estructurales de cada economía no desaparecen con el petróleo barato. Pero el viento de frente geopolítico puede estar disminuyendo. Seguí sin movimientos bruscos hasta ver cómo se estabiliza la situación.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Pendiente de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-watchlist">
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">LUN</div>
+          <div class="nl-watch-text"><strong>Datos de empleo (nóminas de junio)</strong> — Se publican el lunes (por el feriado del 4 de julio). Si el mercado laboral sigue sólido con inflación bajando, el escenario "soft landing" gana credibilidad. Si el empleo flaquea con inflación alta, la Fed enfrentará un dilema real.</div>
+        </div>
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">JULIO</div>
+          <div class="nl-watch-text"><strong>Inicio de temporada de resultados (Q2)</strong> — En dos semanas arranca la temporada de earnings. Con el S&P 500 arriba 9% en el año, las expectativas son altas. Cualquier sorpresa negativa puede generar volatilidad.</div>
+        </div>
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">CONT.</div>
+          <div class="nl-watch-text"><strong>Acuerdo EE.UU.-Irán: implementación</strong> — El acuerdo está firmado, pero la reapertura del Estrecho de Ormuz lleva tiempo. El petróleo puede volver a subir si hay complicaciones en la implementación. Vale la pena monitorear.</div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">El mercado va a estar mirando el empleo y los earnings. Semanas como esta — con buenas noticias en petróleo y chips — pueden ser seguidas por volatilidad si los datos macro no acompañan. Mantené la cabeza fría y el plan de largo plazo intacto.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Concepto de la Semana</div>
+    <div class="nl-conceito">
+      <div class="nl-conceito-eyebrow">Un término por semana</div>
+      <div class="nl-conceito-term">Rendimiento Real</div>
+      <div class="nl-conceito-term-en">Real Yield</div>
+      <div class="nl-conceito-def">
+        <p>Escuchaste que los Treasuries americanos pagan 3,75% anual. Parece bien. Pero si la inflación es del 4,1%, estás ganando menos de lo que pierdes. El rendimiento <em>real</em> es exactamente eso: lo que queda después de descontar la inflación. En este caso: 3,75% − 4,1% = rendimiento real negativo.</p>
+        <p>Esto tiene implicaciones directas. Con rendimientos reales negativos, el incentivo de tener bonos del Tesoro americano baja — porque el dinero "parado" pierde poder de compra en términos reales. Cuando el petróleo baja y la inflación cede, ese número puede volver a ser positivo, lo que cambia el atractivo relativo de diferentes activos.</p>
+      </div>
+      <div class="nl-conceito-grid">
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Tasa Fed actual</div>
+          <div class="nl-conceito-card-val">3,50–3,75%<br><span style="color:#888780; font-size:11px">Sin cambio desde dic. 2025</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Inflación PCE (mayo)</div>
+          <div class="nl-conceito-card-val">4,1% interanual<br><span style="color:#888780; font-size:11px">Máximo desde abril 2023</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Rendimiento real aprox.</div>
+          <div class="nl-conceito-card-val" style="color:#E24B4A">~−0,4%<br><span style="color:#888780; font-size:11px">Negativo con inflación alta</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Impacto si petróleo baja</div>
+          <div class="nl-conceito-card-val">Inflación cede → rendimiento real vuelve a positivo → bonos más atractivos</div>
+        </div>
+      </div>
+      <div class="nl-conceito-impact">
+        <div class="nl-conceito-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-conceito-impact-text">Con rendimientos reales negativos, el dinero en Treasuries no es el escudo que parece. Pero si la inflación baja — y el petróleo más barato ayuda a eso — el panorama puede mejorar en los próximos meses. Para el inversor latinoamericano, esto significa que la ventana para entrar en renta fija americana puede estar mejorando conforme el escenario macro se aclara. Paciencia y monitoreo son la clave por ahora.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="nl-footer">
+    <div class="nl-footer-logo">GORDON</div>
+    <div class="nl-footer-text">
+      Gordon es una publicación editorial independiente. No somos corredora, no tenemos producto para vender, no recibimos comisión de ninguna plataforma. Cuando recomendamos algo, es porque tiene sentido para vos — no para nosotros.<br><br>
+      Respondé este email si querés debatir cualquier punto de esta edición. Leemos todo.
+    </div>
+    <div class="nl-footer-links">
+      <a href="https://somosgordon.com">somosgordon.com</a>
+      <a href="#">Cancelar suscripción</a>
+      <a href="#">Política de privacidad</a>
+      <a href="#">@Instagram</a>
+      <a href="#">@Twitter</a>
+      <a href="#">@LinkedIn</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

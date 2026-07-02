@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gordon — Edición #001</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #ddd; display: flex; justify-content: center; padding: 40px 16px; }
+
+.nl {
+  font-family: 'Inter', sans-serif;
+  background: #F1EFE8;
+  color: #2C2C2A;
+  max-width: 680px;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* HEADER */
+.nl-header {
+  background: #F1EFE8;
+  padding: 28px 32px 20px;
+  border-bottom: 2px solid #2C2C2A;
+}
+.nl-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.nl-logo-name {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #2C2C2A;
+  line-height: 1;
+}
+.nl-logo-line { display: flex; align-items: center; margin-top: 5px; height: 4px; }
+.nl-logo-solid { width: 72px; height: 3px; background: #185FA5; }
+.nl-logo-dotted { width: 36px; height: 3px; border-top: 3px dotted #185FA5; }
+.nl-tagline { margin-top: 6px; font-size: 12px; color: #888780; letter-spacing: 0.04em; }
+.nl-tagline em { font-style: italic; color: #185FA5; font-weight: 500; }
+
+.nl-meta-right { text-align: right; font-size: 11px; color: #888780; line-height: 1.8; letter-spacing: 0.02em; }
+.nl-meta-right a { color: #185FA5; text-decoration: none; font-weight: 500; }
+.nl-social-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
+.nl-social-pill { font-size: 10px; color: #888780; border: 1px solid #888780; border-radius: 3px; padding: 1px 6px; letter-spacing: 0.06em; font-weight: 500; }
+
+.nl-meta-bar { display: flex; gap: 24px; margin-top: 14px; padding-top: 12px; border-top: 0.5px solid #D3D1C7; font-size: 11px; color: #888780; letter-spacing: 0.05em; }
+.nl-meta-bar span { font-weight: 600; color: #2C2C2A; }
+
+/* MARKETS */
+.nl-markets {
+  background: #2C2C2A;
+  padding: 12px 32px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.nl-mkt-item { text-align: center; border-right: 0.5px solid #444441; padding: 0 6px; }
+.nl-mkt-item:last-child { border-right: none; }
+.nl-mkt-label { font-size: 8px; letter-spacing: 0.07em; color: #888780; font-weight: 600; text-transform: uppercase; }
+.nl-mkt-val { font-size: 14px; font-weight: 700; color: #F1EFE8; line-height: 1.2; margin-top: 2px; }
+.nl-mkt-chg { font-size: 10px; font-weight: 500; margin-top: 1px; }
+.up { color: #4CAF82; }
+.dn { color: #E24B4A; }
+.nt { color: #888780; }
+
+/* BODY */
+.nl-body { padding: 0 32px; }
+
+.nl-section-label {
+  font-size: 9px; letter-spacing: 0.18em; font-weight: 700; color: #888780;
+  text-transform: uppercase; padding: 22px 0 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.nl-section-label::after { content: ''; flex: 1; height: 0.5px; background: #D3D1C7; }
+
+.nl-intro { padding: 0 0 20px; font-size: 15px; line-height: 1.75; color: #2C2C2A; border-bottom: 0.5px solid #D3D1C7; }
+
+.nl-ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.nl-ab-col-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+.nl-ab-col-title.altas { color: #4CAF82; }
+.nl-ab-col-title.baixas { color: #E24B4A; }
+.nl-ab-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; border-radius: 4px; margin-bottom: 4px; background: #fff; border: 0.5px solid #D3D1C7; }
+.nl-ab-ticker { font-size: 12px; font-weight: 700; color: #2C2C2A; letter-spacing: 0.06em; }
+.nl-ab-name { font-size: 11px; color: #888780; margin-left: 6px; }
+.nl-ab-pct { font-size: 13px; font-weight: 700; }
+.nl-ab-pct.up { color: #4CAF82; }
+.nl-ab-pct.dn { color: #E24B4A; }
+
+.nl-block { padding: 0 0 24px; border-bottom: 0.5px solid #D3D1C7; }
+.nl-block-title { font-size: 20px; font-weight: 700; line-height: 1.25; color: #2C2C2A; margin-bottom: 12px; }
+.nl-block-title .accent { color: #185FA5; }
+.nl-block-text { font-size: 14px; line-height: 1.75; color: #2C2C2A; }
+.nl-block-text p { margin-bottom: 12px; }
+.nl-block-text p:last-child { margin-bottom: 0; }
+
+.nl-impact { margin-top: 16px; background: #EBF3FB; border-left: 3px solid #185FA5; border-radius: 0 4px 4px 0; padding: 14px 16px; }
+.nl-impact-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #185FA5; margin-bottom: 6px; }
+.nl-impact-text { font-size: 13px; line-height: 1.65; color: #185FA5; opacity: 0.85; }
+
+.nl-company-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.nl-company-badge { background: #2C2C2A; color: #F1EFE8; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; white-space: nowrap; }
+.nl-company-ticker-big { font-size: 22px; font-weight: 700; color: #185FA5; letter-spacing: 0.06em; }
+
+.nl-fio-arrow { display: flex; flex-direction: column; gap: 4px; margin: 14px 0; padding: 14px 16px; background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; }
+.nl-fio-step { font-size: 13px; color: #2C2C2A; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.nl-fio-arrow-icon { color: #185FA5; font-weight: 700; font-size: 12px; margin-top: 1px; flex-shrink: 0; }
+
+.nl-watchlist { display: flex; flex-direction: column; gap: 8px; }
+.nl-watch-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; }
+.nl-watch-date { font-size: 10px; font-weight: 700; color: #185FA5; letter-spacing: 0.08em; min-width: 32px; padding-top: 2px; }
+.nl-watch-text { font-size: 13px; color: #2C2C2A; line-height: 1.5; }
+
+.nl-conceito { background: #2C2C2A; border-radius: 4px; padding: 22px 24px; margin-top: 4px; }
+.nl-conceito-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #888780; margin-bottom: 10px; }
+.nl-conceito-term { font-size: 22px; font-weight: 700; color: #F1EFE8; letter-spacing: 0.04em; margin-bottom: 4px; }
+.nl-conceito-term-en { font-size: 12px; color: #185FA5; font-weight: 500; letter-spacing: 0.06em; margin-bottom: 14px; }
+.nl-conceito-def { font-size: 14px; line-height: 1.75; color: #D3D1C7; }
+.nl-conceito-def p { margin-bottom: 10px; }
+.nl-conceito-def p:last-child { margin-bottom: 0; }
+.nl-conceito-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.nl-conceito-card { background: #3a3a38; border-radius: 4px; padding: 12px 14px; }
+.nl-conceito-card-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888780; margin-bottom: 5px; }
+.nl-conceito-card-val { font-size: 13px; color: #F1EFE8; line-height: 1.5; }
+.nl-conceito-impact { margin-top: 16px; background: #1a3a5c; border-left: 3px solid #185FA5; border-radius: 0 4px 4px 0; padding: 12px 14px; }
+.nl-conceito-impact-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #185FA5; margin-bottom: 5px; }
+.nl-conceito-impact-text { font-size: 13px; line-height: 1.65; color: #a8c8e8; }
+
+.nl-footer { padding: 20px 32px 28px; border-top: 0.5px solid #D3D1C7; margin-top: 8px; }
+.nl-footer-logo { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: #2C2C2A; margin-bottom: 8px; }
+.nl-footer-text { font-size: 11px; color: #888780; line-height: 1.65; }
+.nl-footer-links { margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+.nl-footer-links a { font-size: 11px; color: #185FA5; text-decoration: none; letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+<div class="nl">
+
+  <!-- HEADER -->
+  <div class="nl-header">
+    <div class="nl-header-top">
+      <div>
+        <div class="nl-logo-name">GORDON</div>
+        <div class="nl-logo-line">
+          <div class="nl-logo-solid"></div>
+          <div class="nl-logo-dotted"></div>
+        </div>
+        <div class="nl-tagline">Wall Street &nbsp;<em>en tus manos</em></div>
+      </div>
+      <div class="nl-meta-right">
+        <div><a href="https://somosgordon.com">somosgordon.com</a></div>
+        <div class="nl-social-row">
+          <span class="nl-social-pill">@INSTAGRAM</span>
+          <span class="nl-social-pill">@TWITTER</span>
+          <span class="nl-social-pill">@LINKEDIN</span>
+        </div>
+      </div>
+    </div>
+    <div class="nl-meta-bar">
+      EDICIÓN <span>#001</span> &nbsp;·&nbsp; MIÉRCOLES, 18 JUN 2026 &nbsp;·&nbsp; SEMANA DEL 11–17 JUN &nbsp;·&nbsp; LECTURA <span>~7 MIN</span>
+    </div>
+  </div>
+
+  <!-- MARKETS -->
+  <div class="nl-markets">
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">S&P 500</div>
+      <div class="nl-mkt-val">7.280</div>
+      <div class="nl-mkt-chg dn">−1,4% semana</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">NASDAQ 100</div>
+      <div class="nl-mkt-val">25.100</div>
+      <div class="nl-mkt-chg dn">−3,1% semana</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso MXN</div>
+      <div class="nl-mkt-val">$19,42</div>
+      <div class="nl-mkt-chg dn">−0,8%</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso ARS</div>
+      <div class="nl-mkt-val">$1.086</div>
+      <div class="nl-mkt-chg nt">estable</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso CLP</div>
+      <div class="nl-mkt-val">$968</div>
+      <div class="nl-mkt-chg dn">−1,1%</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">Petróleo Brent</div>
+      <div class="nl-mkt-val">US$ 91</div>
+      <div class="nl-mkt-chg dn">−3,2% semana</div>
+    </div>
+  </div>
+
+  <div class="nl-body">
+
+    <div class="nl-section-label">Esta semana</div>
+    <div class="nl-intro">
+      La inteligencia artificial tuvo su primera corrección seria del año: los chips cayeron hasta 10% en un solo día. La Fed estrenó presidente — y la estrena fue con sorpresa hawkish. Y el petróleo bajó un poco, aunque nadie sabe si la calma va a durar. Tres historias conectadas. Eso es lo que vamos a destrinchar hoy.
+    </div>
+
+    <div class="nl-section-label">Altas &amp; Bajas</div>
+    <div class="nl-block">
+      <div class="nl-ab-grid">
+        <div>
+          <div class="nl-ab-col-title altas">▲ Mayores Alzas</div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">XOM</span><span class="nl-ab-name">ExxonMobil</span></div><div class="nl-ab-pct up">+3,2%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">JPM</span><span class="nl-ab-name">JPMorgan</span></div><div class="nl-ab-pct up">+2,8%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">WMT</span><span class="nl-ab-name">Walmart</span></div><div class="nl-ab-pct up">+2,1%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">UNH</span><span class="nl-ab-name">UnitedHealth</span></div><div class="nl-ab-pct up">+1,9%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">BRK.B</span><span class="nl-ab-name">Berkshire</span></div><div class="nl-ab-pct up">+1,4%</div></div>
+        </div>
+        <div>
+          <div class="nl-ab-col-title baixas">▼ Mayores Bajas</div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">AVGO</span><span class="nl-ab-name">Broadcom</span></div><div class="nl-ab-pct dn">−14,8%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">MRVL</span><span class="nl-ab-name">Marvell</span></div><div class="nl-ab-pct dn">−9,2%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">NVDA</span><span class="nl-ab-name">Nvidia</span></div><div class="nl-ab-pct dn">−7,6%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">AMD</span><span class="nl-ab-name">AMD</span></div><div class="nl-ab-pct dn">−8,9%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">INTC</span><span class="nl-ab-name">Intel</span></div><div class="nl-ab-pct dn">−5,3%</div></div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Los chips tuvieron su peor semana en meses. Si tenés ETFs tecnológicos (QQQ, SOXX), lo sentiste. Pero si tenés acciones de consumo básico o del sector financiero, la semana fue sorpresivamente tranquila. No es señal de que algo roto — es una corrección dentro de un año muy positivo. La clave es no vender cuando duele.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Resumen de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-block-title">Kevin Warsh debuta — <span class="accent">y el mercado no aplaudió</span></div>
+      <div class="nl-block-text">
+        <p>El miércoles fue la primera reunión de la Fed con Kevin Warsh como presidente. El resultado fue el esperado: tasas sin cambio en 3,5%-3,75%. Pero ahí terminó lo predecible. Warsh presentó un comunicado radical: más corto, más directo, sin "forward guidance" — sin pistas sobre lo que va a hacer después. Como chair que no le gusta comunicar de más, dijo simplemente: "el comunicado les da los hechos tal como los vemos".</p>
+        <p>Lo más relevante: el dot plot — el mapa de expectativas de los miembros del comité — mostró que 9 de 18 oficiales proyectan al menos una suba de tasas antes de fin de año. Y Warsh ni siquiera publicó su propia proyección, algo inédito. El S&P 500 cayó 1,2% el mismo día. Los bonos del Tesoro a 2 años pegaron un salto de 16 puntos básicos. El mercado leyó el mensaje correcto: la Fed ya no está pensando en bajar las tasas — está pensando en subirlas.</p>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Si tenés renta fija americana, el escenario se complicó un poco: la probabilidad de cortes de tasas este año prácticamente desapareció. Para quien está pensando en entrar, los bonos cortos (3-6 meses) siguen siendo un refugio razonable, pero los bonos largos pueden sufrir si el mercado empieza a pricear una suba. Diversificá el plazo.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Empresa de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-company-header">
+        <span class="nl-company-badge">Empresa de la semana</span>
+        <span class="nl-company-ticker-big">AVGO — Broadcom</span>
+      </div>
+      <div class="nl-block-title">Broadcom cayó 15%: <span class="accent">¿pánico o oportunidad?</span></div>
+      <div class="nl-block-text">
+        <p>Broadcom publicó resultados el jueves. Los números fueron buenos, pero la guía de ingresos de IA para el próximo trimestre llegó a US$ 16 mil millones — por debajo de los US$ 17,2 mil millones que el mercado esperaba. Esa diferencia de US$ 1,2 mil millones fue suficiente para desatar una venta masiva. Broadcom cayó casi 15% en el mismo día, arrastrando consigo a toda la cadena de semiconductores.</p>
+        <p>El PHLX — el índice que agrupa los chips — cayó 10% en un solo día, la mayor caída desde marzo de 2020. Nvidia perdió más de 4% en un momento, antes de recuperar. AMD cayó 17% en la semana. Micron fue el más resistente del grupo, pero también cedió terreno.</p>
+        <p>¿El problema de fondo? No es que la IA esté muerta — es que el mercado tenía expectativas tan altas que cualquier cosa por debajo del número perfecto generó pánico. Los fundamentales de Broadcom siguen siendo sólidos: guió 84% de crecimiento de ingresos año a año para el próximo trimestre consolidado.</p>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Si tenés exposición a chips vía ETF (SOXX, SMH), ya lo sentiste. Pero las correcciones dentro de un ciclo alcista generalmente son oportunidades de rebalanceo, no señales de salida. El ciclo de inversión en infraestructura de IA no terminó — está apenas comenzando. Mantenete en posición o aprovechá para promediar a la baja si ya tenés convicción en el sector.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Hilo Conductor</div>
+    <div class="nl-block">
+      <div class="nl-block-title">Por qué la caída de los chips <span class="accent">y la Fed hawkish son la misma historia</span></div>
+      <div class="nl-block-text">
+        <p>Parecen dos noticias separadas: los chips se derrumban por una guía de IA que decepcionó, y la Fed sorprende al mercado con un sesgo hacia subas de tasas. Pero están conectadas. Seguí el hilo:</p>
+      </div>
+      <div class="nl-fio-arrow">
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>El petróleo se mantuvo alto por el conflicto en Irán → la inflación en EE.UU. siguió por encima del objetivo del 2%</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Fed no puede bajar tasas con inflación alta → dot plot hawkish, Warsh calla sobre el futuro</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Tasas altas por más tiempo → múltiplos de valuación de tech se comprimen → corrección en chips</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Dólar más fuerte → monedas de LATAM bajo presión → tu patrimonio en pesos vale menos en dólares</span></div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Con tasas altas en EE.UU. y monedas latinoamericanas bajo presión, dolarizar parte del patrimonio sigue siendo una decisión defensiva inteligente. No esperés el momento perfecto — el peso mexicano, el peso argentino y el peso chileno ya están absorbiendo el impacto de este ciclo. Aportes graduales son más sensatos que timing perfecto.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Pendiente de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-watchlist">
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">MIÉ</div>
+          <div class="nl-watch-text"><strong>Minutas del FOMC (18 jun)</strong> — El texto completo de la reunión sale hoy. El mercado va a rastrear cada palabra de Warsh para entender si el sesgo hawkish es firme o es solo retórica de debut.</div>
+        </div>
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">JUE</div>
+          <div class="nl-watch-text"><strong>Resultados de Micron</strong> — El único grande de los chips que aún no publicó. Si los números son buenos, puede darle un respiro al sector. Si decepcionan, la corrección tiene más recorrido.</div>
+        </div>
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">VIE</div>
+          <div class="nl-watch-text"><strong>Acuerdo EE.UU.-Irán (19 jun, Ginebra)</strong> — La firma del acuerdo de cese al fuego está programada para este viernes. Si se cierra, el petróleo puede desplomarse — y eso aliviaría la presión inflacionaria global de golpe.</div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">La próxima semana puede ser un punto de inflexión: si Micron sorprende positivamente y el acuerdo con Irán se firma, el mercado podría rebotar con fuerza. Si alguno de los dos falla, el humor negativo de esta semana se extiende. No hagas movimientos bruscos antes de que salgan los datos.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Concepto de la Semana</div>
+    <div class="nl-conceito">
+      <div class="nl-conceito-eyebrow">Un término por semana</div>
+      <div class="nl-conceito-term">Dot Plot</div>
+      <div class="nl-conceito-term-en">Summary of Economic Projections — Gráfico de puntos de la Fed</div>
+      <div class="nl-conceito-def">
+        <p>Una vez por trimestre, cada uno de los 19 miembros del comité de la Fed publica de forma anónima su proyección de dónde deberían estar las tasas de interés a fin de año y en los próximos dos años. El gráfico resultante — con cada punto siendo un voto — es el "dot plot". Es la guía más directa que tiene el mercado sobre hacia dónde va la política monetaria.</p>
+        <p>Esta semana el dot plot fue la noticia: <strong style="color:#F1EFE8">9 de 18 miembros proyectan una suba de tasas antes de fin de 2026</strong>. La mediana pasó de 3,4% a 3,8%. En lenguaje simple: la Fed dejó de hablar de bajas — ahora habla de subas. Y el nuevo chairman Warsh ni siquiera publicó su propia proyección, algo sin precedentes.</p>
+      </div>
+      <div class="nl-conceito-grid">
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Dotplot marzo 2026</div>
+          <div class="nl-conceito-card-val">Mediana: 3,4%<br><span style="color:#888780; font-size:11px">Señalaba un recorte de tasas</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Dotplot junio 2026</div>
+          <div class="nl-conceito-card-val">Mediana: 3,8%<br><span style="color:#888780; font-size:11px">Señala una suba posible</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Miembros por suba</div>
+          <div class="nl-conceito-card-val" style="color:#E24B4A">9 de 18<br><span style="color:#888780; font-size:11px">Mayoría técnica</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Warsh participó?</div>
+          <div class="nl-conceito-card-val">No — punto faltante<br><span style="color:#888780; font-size:11px">Sin precedentes en historia reciente</span></div>
+        </div>
+      </div>
+      <div class="nl-conceito-impact">
+        <div class="nl-conceito-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-conceito-impact-text">El dot plot es la brújula del mercado de bonos. Cuando se mueve hacia arriba, los precios de los bonos bajan y los rendimientos suben. Para el inversor latinoamericano, esto refuerza la narrativa del dólar fuerte: con la Fed apuntando a tasas más altas, el capital global sigue fluyendo hacia activos americanos. Dolarizar parte del patrimonio sigue siendo una decisión coherente con el escenario.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="nl-footer">
+    <div class="nl-footer-logo">GORDON</div>
+    <div class="nl-footer-text">
+      Gordon es una publicación editorial independiente. No somos corredora, no tenemos producto para vender, no recibimos comisión de ninguna plataforma. Cuando recomendamos algo, es porque tiene sentido para vos — no para nosotros.<br><br>
+      Respondé este email si querés debatir cualquier punto de esta edición. Leemos todo.
+    </div>
+    <div class="nl-footer-links">
+      <a href="https://somosgordon.com">somosgordon.com</a>
+      <a href="#">Cancelar suscripción</a>
+      <a href="#">Política de privacidad</a>
+      <a href="#">@Instagram</a>
+      <a href="#">@Twitter</a>
+      <a href="#">@LinkedIn</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
