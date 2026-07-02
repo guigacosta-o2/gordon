@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edicoes - Gordon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #1B4332; font-family: Archivo, sans-serif; color: #F1ECDF; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: Archivo, sans-serif; cursor: pointer; }
+    nav { position: sticky; top: 0; z-index: 50; background: rgba(27,67,50,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #2D6A4F; }
+    .nav-inner { max-width: 1120px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-name { font-family: DM Serif Display, serif; font-size: 22px; letter-spacing: 0.04em; color: #F1ECDF; }
+    .nav-logo-sub { font-size: 8px; letter-spacing: 0.28em; color: #95D5B2; margin-top: 3px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: #F1ECDF; }
+    .nav-links a:hover { opacity: 0.6; }
+    .nav-assinar { background: #2D6A4F; color: #F1ECDF; border: none; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; padding: 10px 22px; cursor: pointer; text-transform: uppercase; }
+    .nav-assinar:hover { background: #40916C; }
+    .hero { max-width: 1120px; margin: 0 auto; padding: 72px 32px 48px; border-bottom: 1px solid #2D6A4F; }
+    .hero-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; color: #95D5B2; text-transform: uppercase; margin-bottom: 16px; }
+    .hero-title { font-family: DM Serif Display, serif; font-size: clamp(36px,5vw,56px); font-weight: 400; color: #F1ECDF; line-height: 1.1; margin-bottom: 16px; }
+    .hero-desc { font-size: 16px; color: #95D5B2; max-width: 480px; line-height: 1.6; }
+    .edicoes-section { max-width: 1120px; margin: 0 auto; padding: 56px 32px 80px; }
+    .edicoes-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; }
+    .edicoes-header-title { font-size: 11px; letter-spacing: 0.28em; color: #F1ECDF; text-transform: uppercase; font-weight: 700; }
+    .edicoes-count { font-size: 10px; letter-spacing: 0.1em; color: #95D5B2; }
+    .edicoes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2px; }
+    .edicao-card { background: #2D6A4F; padding: 32px 28px; display: flex; flex-direction: column; gap: 12px; cursor: pointer; transition: background 0.15s; text-decoration: none; }
+    .edicao-card:hover { background: #40916C; }
+    .edicao-meta { display: flex; align-items: center; gap: 12px; }
+    .edicao-num { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: #95D5B2; text-transform: uppercase; }
+    .edicao-data { font-size: 10px; letter-spacing: 0.1em; color: #74C69D; }
+    .edicao-lang { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; color: #40916C; background: #1B4332; padding: 2px 7px; text-transform: uppercase; margin-left: auto; }
+    .edicao-titulo { font-family: DM Serif Display, serif; font-size: 18px; line-height: 1.3; color: #F1ECDF; flex: 1; }
+    .edicao-leitura { font-size: 10px; letter-spacing: 0.15em; color: #95D5B2; text-transform: uppercase; }
+    .edicao-ler { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #F1ECDF; text-transform: uppercase; margin-top: 4px; }
+    footer { background: #1B4332; color: #95D5B2; padding: 48px 32px 32px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; border-top: 1px solid #2D6A4F; padding-top: 40px; }
+    .footer-logo { font-family: DM Serif Display, serif; font-size: 20px; letter-spacing: 0.04em; }
+    .footer-copy { font-size: 11px; color: #74C69D; margin-top: 8px; }
+    .footer-links { display: flex; gap: 28px; align-items: center; }
+    .footer-links a { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: #95D5B2; text-transform: uppercase; }
+    .footer-links a:hover { color: #F1ECDF; }
+    @media (max-width: 640px) {
+      .nav-inner { padding: 16px 20px; }
+      .hero { padding: 48px 20px 40px; }
+      .edicoes-section { padding: 40px 20px 60px; }
+      .nav-links { display: none; }
+      footer { padding: 40px 20px 28px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Gordon</span>
+        <span class="nav-logo-sub">Wall Street em suas maos</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Inicio</a>
+        <a href="/edicoes/" style="color:#95D5B2;">Edicoes</a>
+        <a href="/#sobre">Sobre</a>
+      </div>
+      <a href="/#assinar">
+        <button class="nav-assinar">ASSINAR</button>
+      </a>
+    </div>
+  </nav>
+  <div class="hero">
+    <p class="hero-label">Arquivo completo</p>
+    <h1 class="hero-title">Todas as edicoes</h1>
+    <p class="hero-desc">O arquivo completo da newsletter Gordon — Wall Street sem enrolacao, toda semana.</p>
+  </div>
+  <section class="edicoes-section">
+    <div class="edicoes-header">
+      <span class="edicoes-header-title">Edicoes</span>
+      <span class="edicoes-count" id="contador"></span>
+    </div>
+    <div class="edicoes-grid" id="grid">
+    </div>
+  </section>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Gordon</div>
+        <p class="footer-copy">2026 Gordon Investimentos. Nao e recomendacao de investimento.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/edicoes/">Edicoes</a>
+        <a href="/#sobre">Sobre</a>
+        <a href="/#assinar">Assinar</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const cards = document.querySelectorAll('.edicao-card');
+    const contador = document.getElementById('contador');
+    if (cards.length > 0) {
+      contador.textContent = cards.length + (cards.length === 1 ? ' edicao' : ' edicoes');
+    }
+  </script>
+</body>
+</html>
