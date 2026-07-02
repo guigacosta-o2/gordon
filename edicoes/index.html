@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edicoes - Gordon</title>
+  <title>Ediciones - Gordon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -20,26 +20,26 @@
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: #F1ECDF; }
     .nav-links a:hover { opacity: 0.6; }
-    .nav-assinar { background: #2D6A4F; color: #F1ECDF; border: none; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; padding: 10px 22px; cursor: pointer; text-transform: uppercase; }
-    .nav-assinar:hover { background: #40916C; }
+    .nav-suscribir { background: #2D6A4F; color: #F1ECDF; border: none; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; padding: 10px 22px; cursor: pointer; text-transform: uppercase; }
+    .nav-suscribir:hover { background: #40916C; }
     .hero { max-width: 1120px; margin: 0 auto; padding: 72px 32px 48px; border-bottom: 1px solid #2D6A4F; }
     .hero-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; color: #95D5B2; text-transform: uppercase; margin-bottom: 16px; }
     .hero-title { font-family: DM Serif Display, serif; font-size: clamp(36px,5vw,56px); font-weight: 400; color: #F1ECDF; line-height: 1.1; margin-bottom: 16px; }
     .hero-desc { font-size: 16px; color: #95D5B2; max-width: 480px; line-height: 1.6; }
-    .edicoes-section { max-width: 1120px; margin: 0 auto; padding: 56px 32px 80px; }
-    .edicoes-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; }
-    .edicoes-header-title { font-size: 11px; letter-spacing: 0.28em; color: #F1ECDF; text-transform: uppercase; font-weight: 700; }
-    .edicoes-count { font-size: 10px; letter-spacing: 0.1em; color: #95D5B2; }
-    .edicoes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2px; }
-    .edicao-card { background: #2D6A4F; padding: 32px 28px; display: flex; flex-direction: column; gap: 12px; cursor: pointer; transition: background 0.15s; text-decoration: none; }
-    .edicao-card:hover { background: #40916C; }
-    .edicao-meta { display: flex; align-items: center; gap: 12px; }
-    .edicao-num { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: #95D5B2; text-transform: uppercase; }
-    .edicao-data { font-size: 10px; letter-spacing: 0.1em; color: #74C69D; }
-    .edicao-lang { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; color: #40916C; background: #1B4332; padding: 2px 7px; text-transform: uppercase; margin-left: auto; }
-    .edicao-titulo { font-family: DM Serif Display, serif; font-size: 18px; line-height: 1.3; color: #F1ECDF; flex: 1; }
-    .edicao-leitura { font-size: 10px; letter-spacing: 0.15em; color: #95D5B2; text-transform: uppercase; }
-    .edicao-ler { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #F1ECDF; text-transform: uppercase; margin-top: 4px; }
+    .ediciones-section { max-width: 1120px; margin: 0 auto; padding: 56px 32px 80px; }
+    .ediciones-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; }
+    .ediciones-header-title { font-size: 11px; letter-spacing: 0.28em; color: #F1ECDF; text-transform: uppercase; font-weight: 700; }
+    .ediciones-count { font-size: 10px; letter-spacing: 0.1em; color: #95D5B2; }
+    .ediciones-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2px; }
+    .edicion-card { background: #2D6A4F; padding: 32px 28px; display: flex; flex-direction: column; gap: 12px; cursor: pointer; transition: background 0.15s; text-decoration: none; }
+    .edicion-card:hover { background: #40916C; }
+    .edicion-meta { display: flex; align-items: center; gap: 12px; }
+    .edicion-num { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: #95D5B2; text-transform: uppercase; }
+    .edicion-fecha { font-size: 10px; letter-spacing: 0.1em; color: #74C69D; }
+    .edicion-lang { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; color: #40916C; background: #1B4332; padding: 2px 7px; text-transform: uppercase; margin-left: auto; }
+    .edicion-titulo { font-family: DM Serif Display, serif; font-size: 18px; line-height: 1.3; color: #F1ECDF; flex: 1; }
+    .edicion-lectura { font-size: 10px; letter-spacing: 0.15em; color: #95D5B2; text-transform: uppercase; }
+    .edicion-leer { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #F1ECDF; text-transform: uppercase; margin-top: 4px; }
     footer { background: #1B4332; color: #95D5B2; padding: 48px 32px 32px; }
     .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; border-top: 1px solid #2D6A4F; padding-top: 40px; }
     .footer-logo { font-family: DM Serif Display, serif; font-size: 20px; letter-spacing: 0.04em; }
@@ -50,7 +50,7 @@
     @media (max-width: 640px) {
       .nav-inner { padding: 16px 20px; }
       .hero { padding: 48px 20px 40px; }
-      .edicoes-section { padding: 40px 20px 60px; }
+      .ediciones-section { padding: 40px 20px 60px; }
       .nav-links { display: none; }
       footer { padding: 40px 20px 28px; }
     }
@@ -61,53 +61,70 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo">
         <span class="nav-logo-name">Gordon</span>
-        <span class="nav-logo-sub">Wall Street em suas maos</span>
+        <span class="nav-logo-sub">Wall Street en tus manos</span>
       </a>
       <div class="nav-links">
         <a href="/">Inicio</a>
-        <a href="/edicoes/" style="color:#95D5B2;">Edicoes</a>
-        <a href="/#sobre">Sobre</a>
+        <a href="/edicoes/" style="color:#95D5B2;">Ediciones</a>
+        <a href="/#sobre">Acerca de</a>
       </div>
-      <a href="/#assinar">
-        <button class="nav-assinar">ASSINAR</button>
+      <a href="/#suscribir">
+        <button class="nav-suscribir">SUSCRIBIRSE</button>
       </a>
     </div>
   </nav>
   <div class="hero">
-    <p class="hero-label">Arquivo completo</p>
-    <h1 class="hero-title">Todas as edicoes</h1>
-    <p class="hero-desc">O arquivo completo da newsletter Gordon — Wall Street sem enrolacao, toda semana.</p>
+    <p class="hero-label">Archivo completo</p>
+    <h1 class="hero-title">Todas las ediciones</h1>
+    <p class="hero-desc">El archivo completo de la newsletter Gordon - Wall Street sin rodeos, cada semana.</p>
   </div>
-  <section class="edicoes-section">
-    <div class="edicoes-header">
-      <span class="edicoes-header-title">Edicoes</span>
-      <span class="edicoes-count" id="contador"></span>
+  <section class="ediciones-section">
+    <div class="ediciones-header">
+      <span class="ediciones-header-title">Ediciones</span>
+      <span class="ediciones-count" id="contador"></span>
     </div>
-    <div class="edicoes-grid" id="grid">
-
-      <!-- ADICIONE NOVAS EDICOES AQUI (mais recente primeiro) -->
-
-    
+    <div class="ediciones-grid" id="grid">
+      <!-- AGREGA NUEVAS EDICIONES AQUI (la mas reciente primero) -->
+      <a class="edicion-card" href="gordon_002_es_jun25.html">
+        <div class="edicion-meta">
+          <span class="edicion-num">#002</span>
+          <span class="edicion-fecha">25 JUN 2026</span>
+          <span class="edicion-lang">ES</span>
+        </div>
+        <p class="edicion-titulo">El petroleo cayo 19% y Micron subio 16%</p>
+        <span class="edicion-lectura">~7 min de lectura</span>
+        <span class="edicion-leer">LEER EDICION</span>
+      </a>
+      <a class="edicion-card" href="gordon_001_es_jun18.html">
+        <div class="edicion-meta">
+          <span class="edicion-num">#001</span>
+          <span class="edicion-fecha">18 JUN 2026</span>
+          <span class="edicion-lang">ES</span>
+        </div>
+        <p class="edicion-titulo">La IA tuvo su primera correccion del ano: los chips cayeron hasta 10%</p>
+        <span class="edicion-lectura">~7 min de lectura</span>
+        <span class="edicion-leer">LEER EDICION</span>
+      </a>
     </div>
   </section>
   <footer>
     <div class="footer-inner">
       <div>
         <div class="footer-logo">Gordon</div>
-        <p class="footer-copy">2026 Gordon Investimentos. Nao e recomendacao de investimento.</p>
+        <p class="footer-copy">2026 Gordon. No es recomendacion de inversion.</p>
       </div>
       <div class="footer-links">
-        <a href="/edicoes/">Edicoes</a>
-        <a href="/#sobre">Sobre</a>
-        <a href="/#assinar">Assinar</a>
+        <a href="/edicoes/">Ediciones</a>
+        <a href="/#sobre">Acerca de</a>
+        <a href="/#suscribir">Suscribirse</a>
       </div>
     </div>
   </footer>
   <script>
-    const cards = document.querySelectorAll('.edicao-card');
+    const cards = document.querySelectorAll('.edicion-card');
     const contador = document.getElementById('contador');
     if (cards.length > 0) {
-      contador.textContent = cards.length + (cards.length === 1 ? ' edicao' : ' edicoes');
+      contador.textContent = cards.length + (cards.length === 1 ? ' edicion' : ' ediciones');
     }
   </script>
 </body>
