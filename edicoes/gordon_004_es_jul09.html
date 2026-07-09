@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!--
+SUBJECT LINE: La paz duró seis días — y el mercado cambió de opinión sobre las tasas
+PREHEADER: El petróleo subió 10%, SpaceX entró al Nasdaq-100 sin pedir permiso y la Fed vuelve a hablar de subir tasas. Lo que significa para tu cartera, sin dramatismo.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gordon — Edición #004</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #ddd; display: flex; justify-content: center; padding: 40px 16px; }
+
+.nl {
+  font-family: 'Inter', sans-serif;
+  background: #F1EFE8;
+  color: #2C2C2A;
+  max-width: 680px;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.nl-header { background: #F1EFE8; padding: 28px 32px 20px; border-bottom: 2px solid #2C2C2A; }
+.nl-header-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.nl-logo-name { font-size: 32px; font-weight: 700; letter-spacing: 0.18em; color: #2C2C2A; line-height: 1; }
+.nl-logo-line { display: flex; align-items: center; margin-top: 5px; height: 4px; }
+.nl-logo-solid { width: 72px; height: 3px; background: #185FA5; }
+.nl-logo-dotted { width: 36px; height: 3px; border-top: 3px dotted #185FA5; }
+.nl-tagline { margin-top: 6px; font-size: 12px; color: #888780; letter-spacing: 0.04em; }
+.nl-tagline em { font-style: italic; color: #185FA5; font-weight: 500; }
+.nl-meta-right { text-align: right; font-size: 11px; color: #888780; line-height: 1.8; letter-spacing: 0.02em; }
+.nl-meta-right a { color: #185FA5; text-decoration: none; font-weight: 500; }
+.nl-social-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
+.nl-social-pill { font-size: 10px; color: #888780; border: 1px solid #888780; border-radius: 3px; padding: 1px 6px; letter-spacing: 0.06em; font-weight: 500; }
+.nl-meta-bar { display: flex; gap: 24px; margin-top: 14px; padding-top: 12px; border-top: 0.5px solid #D3D1C7; font-size: 11px; color: #888780; letter-spacing: 0.05em; flex-wrap: wrap; }
+.nl-meta-bar span { font-weight: 600; color: #2C2C2A; }
+
+.nl-markets { background: #2C2C2A; padding: 12px 32px; display: grid; grid-template-columns: repeat(6, 1fr); }
+.nl-mkt-item { text-align: center; border-right: 0.5px solid #444441; padding: 0 6px; }
+.nl-mkt-item:last-child { border-right: none; }
+.nl-mkt-label { font-size: 8px; letter-spacing: 0.07em; color: #888780; font-weight: 600; text-transform: uppercase; }
+.nl-mkt-val { font-size: 14px; font-weight: 700; color: #F1EFE8; line-height: 1.2; margin-top: 2px; }
+.nl-mkt-chg { font-size: 10px; font-weight: 500; margin-top: 1px; }
+.up { color: #4CAF82; }
+.dn { color: #E24B4A; }
+.nt { color: #888780; }
+
+.nl-body { padding: 0 32px; }
+.nl-section-label { font-size: 9px; letter-spacing: 0.18em; font-weight: 700; color: #888780; text-transform: uppercase; padding: 22px 0 10px; display: flex; align-items: center; gap: 10px; }
+.nl-section-label::after { content: ''; flex: 1; height: 0.5px; background: #D3D1C7; }
+.nl-intro { padding: 0 0 20px; font-size: 15px; line-height: 1.75; color: #2C2C2A; border-bottom: 0.5px solid #D3D1C7; }
+
+.nl-ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.nl-ab-col-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+.nl-ab-col-title.altas { color: #4CAF82; }
+.nl-ab-col-title.baixas { color: #E24B4A; }
+.nl-ab-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; border-radius: 4px; margin-bottom: 4px; background: #fff; border: 0.5px solid #D3D1C7; }
+.nl-ab-ticker { font-size: 12px; font-weight: 700; color: #2C2C2A; letter-spacing: 0.06em; }
+.nl-ab-name { font-size: 11px; color: #888780; margin-left: 6px; }
+.nl-ab-pct { font-size: 13px; font-weight: 700; white-space: nowrap; }
+.nl-ab-pct.up { color: #4CAF82; }
+.nl-ab-pct.dn { color: #E24B4A; }
+
+.nl-block { padding: 0 0 24px; border-bottom: 0.5px solid #D3D1C7; }
+.nl-block-title { font-size: 20px; font-weight: 700; line-height: 1.25; color: #2C2C2A; margin-bottom: 12px; }
+.nl-block-title .accent { color: #185FA5; }
+.nl-block-text { font-size: 14px; line-height: 1.75; color: #2C2C2A; }
+.nl-block-text p { margin-bottom: 12px; }
+.nl-block-text p:last-child { margin-bottom: 0; }
+
+.nl-impact { margin-top: 16px; background: #EBF3FB; border-left: 3px solid #185FA5; border-radius: 0 4px 4px 0; padding: 14px 16px; }
+.nl-impact-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #185FA5; margin-bottom: 6px; }
+.nl-impact-text { font-size: 13px; line-height: 1.65; color: #185FA5; opacity: 0.85; }
+
+.nl-company-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+.nl-company-badge { background: #2C2C2A; color: #F1EFE8; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; white-space: nowrap; }
+.nl-company-ticker-big { font-size: 22px; font-weight: 700; color: #185FA5; letter-spacing: 0.06em; }
+
+.nl-fio-arrow { display: flex; flex-direction: column; gap: 4px; margin: 14px 0; padding: 14px 16px; background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; }
+.nl-fio-step { font-size: 13px; color: #2C2C2A; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.nl-fio-arrow-icon { color: #185FA5; font-weight: 700; font-size: 12px; margin-top: 1px; flex-shrink: 0; }
+
+.nl-pais-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.nl-pais-card { background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; padding: 12px 14px; }
+.nl-pais-name { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #185FA5; margin-bottom: 5px; }
+.nl-pais-text { font-size: 12.5px; color: #2C2C2A; line-height: 1.55; }
+
+.nl-watchlist { display: flex; flex-direction: column; gap: 8px; }
+.nl-watch-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; }
+.nl-watch-date { font-size: 10px; font-weight: 700; color: #185FA5; letter-spacing: 0.08em; min-width: 44px; padding-top: 2px; }
+.nl-watch-text { font-size: 13px; color: #2C2C2A; line-height: 1.5; }
+
+.nl-conceito { background: #2C2C2A; border-radius: 4px; padding: 22px 24px; margin-top: 4px; }
+.nl-conceito-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #888780; margin-bottom: 10px; }
+.nl-conceito-term { font-size: 22px; font-weight: 700; color: #F1EFE8; letter-spacing: 0.04em; margin-bottom: 4px; }
+.nl-conceito-term-en { font-size: 12px; color: #185FA5; font-weight: 500; letter-spacing: 0.06em; margin-bottom: 14px; }
+.nl-conceito-def { font-size: 14px; line-height: 1.75; color: #D3D1C7; }
+.nl-conceito-def p { margin-bottom: 10px; }
+.nl-conceito-def p:last-child { margin-bottom: 0; }
+.nl-conceito-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.nl-conceito-card { background: #3a3a38; border-radius: 4px; padding: 12px 14px; }
+.nl-conceito-card-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888780; margin-bottom: 5px; }
+.nl-conceito-card-val { font-size: 13px; color: #F1EFE8; line-height: 1.5; }
+.nl-conceito-impact { margin-top: 16px; background: #1a3a5c; border-left: 3px solid #185FA5; border-radius: 0 4px 4px 0; padding: 12px 14px; }
+.nl-conceito-impact-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #185FA5; margin-bottom: 5px; }
+.nl-conceito-impact-text { font-size: 13px; line-height: 1.65; color: #a8c8e8; }
+
+.nl-footer { padding: 20px 32px 28px; border-top: 0.5px solid #D3D1C7; margin-top: 8px; }
+.nl-footer-logo { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: #2C2C2A; margin-bottom: 8px; }
+.nl-footer-text { font-size: 11px; color: #888780; line-height: 1.65; }
+.nl-footer-links { margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+.nl-footer-links a { font-size: 11px; color: #185FA5; text-decoration: none; letter-spacing: 0.04em; }
+.nl-footer-address { margin-top: 12px; font-size: 10px; color: #888780; line-height: 1.6; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  body { padding: 0; }
+  .nl-header, .nl-footer { padding-left: 18px; padding-right: 18px; }
+  .nl-markets { padding: 12px 18px; grid-template-columns: repeat(3, 1fr); row-gap: 10px; }
+  .nl-mkt-item:nth-child(3n) { border-right: none; }
+  .nl-body { padding: 0 18px; }
+  .nl-logo-name { font-size: 26px; }
+  .nl-header-top { flex-direction: column; gap: 12px; }
+  .nl-meta-right { text-align: left; }
+  .nl-social-row { justify-content: flex-start; }
+  .nl-ab-grid { grid-template-columns: 1fr; }
+  .nl-pais-grid { grid-template-columns: 1fr; }
+  .nl-conceito-grid { grid-template-columns: 1fr; }
+  .nl-block-title { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="nl">
+
+  <!-- HEADER -->
+  <div class="nl-header">
+    <div class="nl-header-top">
+      <div>
+        <div class="nl-logo-name">GORDON</div>
+        <div class="nl-logo-line">
+          <div class="nl-logo-solid"></div>
+          <div class="nl-logo-dotted"></div>
+        </div>
+        <div class="nl-tagline">Wall Street &nbsp;<em>en tus manos</em></div>
+      </div>
+      <div class="nl-meta-right">
+        <div><a href="https://somosgordon.com">somosgordon.com</a></div>
+        <div class="nl-social-row">
+          <span class="nl-social-pill">@INSTAGRAM</span>
+        </div>
+      </div>
+    </div>
+    <div class="nl-meta-bar">
+      EDICIÓN <span>#004</span> &nbsp;·&nbsp; JUEVES, 9 JUL 2026 &nbsp;·&nbsp; SEMANA DEL 2–8 JUL &nbsp;·&nbsp; LECTURA <span>~7 MIN</span>
+    </div>
+  </div>
+
+  <!-- MARKETS — 6 columnas LATAM -->
+  <div class="nl-markets">
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">S&P 500</div>
+      <div class="nl-mkt-val">7.483</div>
+      <div class="nl-mkt-chg dn">−0,3% semana</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">NASDAQ 100</div>
+      <div class="nl-mkt-val">25.910</div>
+      <div class="nl-mkt-chg dn">−1,0% semana</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso MXN</div>
+      <div class="nl-mkt-val">$19,92</div>
+      <div class="nl-mkt-chg dn">peso −1,7%</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso ARS</div>
+      <div class="nl-mkt-val">$1.515</div>
+      <div class="nl-mkt-chg nt">unificado tras convergencia</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso CLP</div>
+      <div class="nl-mkt-val">$985</div>
+      <div class="nl-mkt-chg dn">peso −1,4%</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">Petróleo Brent</div>
+      <div class="nl-mkt-val">US$ 78</div>
+      <div class="nl-mkt-chg up">+10% semana</div>
+    </div>
+  </div>
+
+  <div class="nl-body">
+
+    <div class="nl-section-label">Esta semana</div>
+    <div class="nl-intro">
+      Hace siete días, el escenario parecía claro: empleo débil, petróleo barato, una Fed sin argumentos para subir tasas. Esta semana, todo eso se dio vuelta. El cese al fuego con Irán colapsó, el Brent subió 10% hasta US$ 78, y el mercado pasó de descartar un alza de tasas a asignarle 66% de probabilidad para septiembre. Además: SpaceX debutó en el Nasdaq-100 — y si tienes un ETF que sigue ese índice, ahora eres accionista de la empresa de Elon Musk, te hayan consultado o no. Cuatro historias, un solo mensaje: no construyas tu estrategia sobre los titulares de una semana. Eso es lo que destrinchamos hoy.
+    </div>
+
+    <div class="nl-section-label">Altos &amp; Bajos</div>
+    <div class="nl-block">
+      <div class="nl-ab-grid">
+        <div>
+          <div class="nl-ab-col-title altas">▲ Mayores Alzas</div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">CRNX</span><span class="nl-ab-name">Crinetics</span></div><div class="nl-ab-pct up">+98,8%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">NOC</span><span class="nl-ab-name">Northrop</span></div><div class="nl-ab-pct up">+10%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">RTX</span><span class="nl-ab-name">RTX Corp</span></div><div class="nl-ab-pct up">+7%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">AVGO</span><span class="nl-ab-name">Broadcom (miércoles)</span></div><div class="nl-ab-pct up">+4,8%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">NVDA</span><span class="nl-ab-name">Nvidia (miércoles)</span></div><div class="nl-ab-pct up">+3,6%</div></div>
+        </div>
+        <div>
+          <div class="nl-ab-col-title baixas">▼ Mayores Bajas</div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">SPCX</span><span class="nl-ab-name">SpaceX (debut)</span></div><div class="nl-ab-pct dn">−6,8%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">SOXX</span><span class="nl-ab-name">Semiconductores (martes)</span></div><div class="nl-ab-pct dn">−4,5%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">MU</span><span class="nl-ab-name">Micron (miércoles)</span></div><div class="nl-ab-pct dn">−4,0%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">AXP</span><span class="nl-ab-name">Amex (miércoles)</span></div><div class="nl-ab-pct dn">−3,8%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">JPM</span><span class="nl-ab-name">JPMorgan (miércoles)</span></div><div class="nl-ab-pct dn">−2,5%</div></div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">La rotación de la semana fue de manual: con la guerra de vuelta, ganaron energía y defensa; perdieron los chips y los sectores sensibles al crédito, como los bancos. Crinetics es el caso aparte — se duplicó porque Vertex ofreció US$ 10.000 millones por ella. Nota la ironía: Micron, que hace tres semanas era la estrella del sector con resultados históricos, lleva dos ediciones consecutivas entre las mayores bajas. En el mercado, la memoria es corta y la rotación no perdona. Por eso la diversificación entre sectores importa más que elegir al ganador del mes.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Resumen de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-block-title">El cese al fuego colapsó — <span class="accent">y con él, la tesis de recorte de tasas</span></div>
+      <div class="nl-block-text">
+        <p>La secuencia fue rápida. El martes, la Guardia Revolucionaria de Irán atacó cuatro buques comerciales en el Estrecho de Ormuz — la primera vez que cuatro embarcaciones son atacadas en un solo día desde que empezó el conflicto. Estados Unidos respondió revocando la licencia que permitía a Irán vender petróleo y lanzando lo que el Centcom describió como "una serie de ataques poderosos". El miércoles, en la cumbre de la OTAN en Ankara, Trump declaró que el cese al fuego estaba "terminado" y amenazó con nuevos bombardeos esa misma noche. Irán respondió atacando bases estadounidenses en Bahréin y Kuwait.</p>
+        <p>El mercado hizo lo que hace siempre: reprecificar todo en horas. El Brent saltó de US$ 71 a US$ 78 — llegó a tocar US$ 80 durante la rueda del miércoles. Los rendimientos de los bonos subieron en todo el mundo. Y la probabilidad de un alza de tasas de la Fed en septiembre, que la semana pasada era prácticamente cero tras el dato débil de empleo, saltó a 66%. Para completar el giro, las minutas de la reunión de junio de la Fed — la primera bajo la presidencia de Kevin Warsh — mostraron que algunos miembros ya veían argumentos para subir las tasas.</p>
+        <p>El detalle que más llama la atención: el oro, el activo refugio por excelencia, cayó a US$ 4.040 en plena escalada bélica. ¿Por qué? Porque cuando el mercado espera tasas más altas, hasta el oro sufre — el metal no paga intereses, y competir contra bonos que rinden más se vuelve cuesta arriba. Una semana en la que acciones, bonos y oro cayeron juntos.</p>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">La lección más valiosa de la semana no es sobre Irán — es sobre ti. Si la semana pasada reorganizaste tu cartera porque "la Fed ya no va a subir tasas", esta semana el mercado te cobró la factura. Los escenarios macro cambian más rápido de lo que cualquier inversor minorista puede reaccionar. La respuesta no es adivinar mejor: es tener una cartera que no dependa de adivinar. Aportes regulares, diversificación real y decisiones que sobrevivan a cualquier titular.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Empresa de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-company-header">
+        <span class="nl-company-badge">Empresa de la semana</span>
+        <span class="nl-company-ticker-big">SPCX — SpaceX</span>
+      </div>
+      <div class="nl-block-title">SpaceX entró al Nasdaq-100 — <span class="accent">y entró a tu ETF sin pedirte permiso</span></div>
+      <div class="nl-block-text">
+        <p>El martes, SpaceX se convirtió en la primera mega-empresa recién listada en entrar al Nasdaq-100 bajo las nuevas reglas de "incorporación acelerada" del índice. La decisión generó semanas de controversia: el administrador del índice aceleró el ingreso de una compañía que todavía no genera ganancias, y la inclusión obliga a los fondos indexados a comprar miles de millones de dólares en acciones de forma automática. El resultado del debut fue elocuente: la acción cayó 6,8% en su primer día dentro del índice.</p>
+        <p>Aquí está el punto que la cobertura financiera suele pasar por alto: si tienes un ETF que replica el Nasdaq-100 — como el QQQ, uno de los más populares entre inversores latinoamericanos —, desde el martes eres accionista de SpaceX. Nadie te consultó, y así funciona el sistema: un índice no es una ley de la naturaleza, es un producto administrado por un comité que define reglas, las cambia cuando lo considera conveniente y decide qué empresas entran y cuáles salen. "Inversión pasiva" no significa que nadie toma decisiones — significa que las decisiones las toma otro.</p>
+        <p>El contexto amplía la historia: la misma semana, Blue Origin — la empresa espacial de Jeff Bezos — comenzó a levantar US$ 10.000 millones en su primera ronda externa, con una valuación de US$ 130.000 millones. La carrera espacial dejó de ser un tema de agencias gubernamentales: ahora es una categoría de inversión, con capital institucional y presencia en los índices que millones de personas compran sin mirar la lista de componentes.</p>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">No se trata de si SpaceX es buena o mala inversión — el tiempo lo dirá. Se trata de un hábito: revisa periódicamente qué contiene tu ETF. Los índices cambian, las reglas cambian, y tu exposición real puede ser muy distinta de la que tenías en mente cuando compraste. Cinco minutos leyendo la lista de componentes de tu fondo valen más que cualquier pronóstico.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Hilo Conductor</div>
+    <div class="nl-block">
+      <div class="nl-block-title">El petróleo volvió a US$ 78 — <span class="accent">y la cadena de efectos ahora corre en reversa</span></div>
+      <div class="nl-block-text">
+        <p>En las últimas dos ediciones seguimos la cadena en una dirección: petróleo barato → menos inflación → Fed más tranquila → dólar más débil. Esta semana, la misma cadena se activó en sentido contrario. Vale la pena seguirla paso a paso, porque es el mecanismo que conecta un misil en Ormuz con tu cuenta bancaria:</p>
+      </div>
+      <div class="nl-fio-arrow">
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Irán ataca buques en Ormuz → EE.UU. revoca la licencia del petróleo iraní y bombardea → Brent de US$ 71 a US$ 78 en tres ruedas</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Petróleo caro → la inflación energética vuelve a presionar → el FMI ya proyecta petróleo 32% más caro en 2026 e inflación global de 4,7%</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Mercado reprecifica a la Fed → de "recorte en el segundo semestre" a 66% de probabilidad de alza en septiembre</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span>Tasas futuras suben → el dólar se fortalece → las monedas de América Latina vuelven a quedar bajo presión</span></div>
+      </div>
+      <div class="nl-pais-grid">
+        <div class="nl-pais-card">
+          <div class="nl-pais-name">México</div>
+          <div class="nl-pais-text">El peso se depreció hasta $19,92 junto con el resto de las monedas emergentes. México produce crudo, pero importa gasolinas: el petróleo caro le pega por los dos lados — presiona la inflación local y complica a Banxico.</div>
+        </div>
+        <div class="nl-pais-card">
+          <div class="nl-pais-name">Argentina</div>
+          <div class="nl-pais-text">Semana cargada: el gobierno presentó un nuevo esquema plurianual de financiamiento y las cotizaciones oficiales y financieras convergieron. El petróleo caro juega a favor de Vaca Muerta y las exportadoras de energía — uno de los pocos ganadores regionales del episodio.</div>
+        </div>
+        <div class="nl-pais-card">
+          <div class="nl-pais-name">Chile</div>
+          <div class="nl-pais-text">El peso perdió 1,4% en la semana, hasta $985. Chile importa prácticamente todo el petróleo que consume: cada dólar que sube el Brent es costo directo para la economía — transporte, electricidad, inflación.</div>
+        </div>
+        <div class="nl-pais-card">
+          <div class="nl-pais-name">Colombia</div>
+          <div class="nl-pais-text">Caso mixto: el petróleo es su principal exportación, así que el Brent a US$ 78 mejora los ingresos fiscales y ayuda a Ecopetrol. Pero el dólar globalmente fuerte y la aversión al riesgo limitan el alivio para el peso colombiano.</div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">La ventana de alivio cambiario que describimos la semana pasada duró exactamente un feriado americano. Esto confirma la tesis de fondo: la diversificación en dólares no es una apuesta táctica que se abre y se cierra según el titular del día — es una decisión estructural. Si ya tienes una parte del patrimonio dolarizada, mantenla. Si no, los aportes graduales siguen siendo el camino sensato: nadie puede anticipar la próxima frase que moverá al mercado.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Fíjate en Esto</div>
+    <div class="nl-block">
+      <div class="nl-watchlist">
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">14 JUL</div>
+          <div class="nl-watch-text"><strong>CPI de junio (inflación de EE.UU.)</strong> — El dato que iba a confirmar la baja de la inflación llega ahora con el petróleo 10% más caro. El PPI sale el 15, y la Fed decide tasas el 28–29 de julio. Si el CPI sorprende al alza, el alza de septiembre puede pasar de probabilidad a consenso.</div>
+        </div>
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">PRÓX. SEM.</div>
+          <div class="nl-watch-text"><strong>Arranca la temporada de resultados del Q2</strong> — Delta y PepsiCo abren, los bancos siguen. El S&P 500 está unos 1.000 puntos por encima de donde estaba en la temporada anterior: la vara subió con él. Samsung acaba de mostrar el riesgo — multiplicó su ganancia por 19 y la acción cayó, porque el resultado récord quedó por debajo de las expectativas más optimistas.</div>
+        </div>
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">CONT.</div>
+          <div class="nl-watch-text"><strong>Irán y el Estrecho de Ormuz</strong> — Trump promete más ataques, Irán responde contra bases estadounidenses en el Golfo, y cada buque que cruza el estrecho es una apuesta. El FMI asume que Ormuz reabre este mismo mes — un supuesto que la realidad puede desmentir cualquier mañana, con el Brent US$ 5 más caro antes del desayuno.</div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Las próximas dos semanas concentran tres fuentes de volatilidad: inflación, resultados corporativos y geopolítica. No es momento de movimientos bruscos en ninguna dirección — ni de vender por pánico ni de comprar por euforia. Mantén el plan, revisa que tu exposición sea la que realmente quieres tener, y deja que los datos —no los titulares— justifiquen cualquier ajuste.</div>
+      </div>
+    </div>
+
+    <div class="nl-section-label">Concepto de la Semana</div>
+    <div class="nl-conceito">
+      <div class="nl-conceito-eyebrow">Un término por semana</div>
+      <div class="nl-conceito-term">Probabilidad Implícita</div>
+      <div class="nl-conceito-term-en">Fed Funds Futures / CME FedWatch</div>
+      <div class="nl-conceito-def">
+        <p>Cada vez que lees "el mercado asigna 66% de probabilidad a un alza de tasas", conviene saber de dónde sale ese número. No es una encuesta: proviene de los futuros de fondos federales, contratos en los que operadores apuestan dinero real sobre dónde estará la tasa de la Fed en cada mes. El precio de esos contratos refleja la apuesta promedio del mercado; un cálculo matemático lo convierte en porcentaje, y la bolsa CME lo publica en una herramienta llamada FedWatch. Eso es lo que después aparece en los titulares como "el mercado espera".</p>
+        <p>Es una herramienta valiosa: es el mejor termómetro disponible de lo que el mercado piensa, porque equivocarse ahí cuesta dinero, no solo reputación. El error común es confundir el termómetro con una bola de cristal. La probabilidad implícita mide la expectativa de hoy con la información de hoy — no predice la información de mañana.</p>
+        <p>Esta semana lo demostró con precisión quirúrgica: la probabilidad de un alza en septiembre pasó de cerca de 30% en junio, a prácticamente 0% tras el dato débil de empleo del 2 de julio, a 66% tras el colapso del cese al fuego el 8 de julio. Tres lecturas opuestas en catorce días — cada una presentada, en su momento, como la visión definitiva del mercado.</p>
+      </div>
+      <div class="nl-conceito-grid">
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Junio</div>
+          <div class="nl-conceito-card-val">~30% de probabilidad de alza<br><span style="color:#888780; font-size:11px">Escenario "hawkish" moderado</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">2 de julio (empleo débil)</div>
+          <div class="nl-conceito-card-val" style="color:#4CAF82">~0%<br><span style="color:#888780; font-size:11px">El mercado descartó el alza</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">8 de julio (vuelve la guerra)</div>
+          <div class="nl-conceito-card-val" style="color:#E24B4A">66%<br><span style="color:#888780; font-size:11px">El alza volvió a la mesa</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Qué mide realmente</div>
+          <div class="nl-conceito-card-val">La expectativa de hoy — no el futuro. Cambia cada vez que cambia la información.</div>
+        </div>
+      </div>
+      <div class="nl-conceito-impact">
+        <div class="nl-conceito-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-conceito-impact-text">Cuando leas "el mercado espera X", tradúcelo así: "con la información de hoy, la apuesta promedio es X — y puede cambiar mañana". Usar esas probabilidades para decidir tu estrategia de largo plazo es como planificar unas vacaciones de un año según el pronóstico del clima de esta tarde. Los datos sirven para entender el contexto, no para cronometrar el mercado. Tu plan de inversión debería funcionar en los tres escenarios que el mercado precificó este mes — porque los tres fueron, por unos días, "la certeza del mercado".</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="nl-footer">
+    <div class="nl-footer-logo">GORDON</div>
+    <div class="nl-footer-text">
+      Gordon es una publicación editorial independiente. No somos corredora, no tenemos producto para vender, no recibimos comisión de ninguna plataforma. Cuando recomendamos algo, es porque tiene sentido para ti — no para nosotros.<br><br>
+      Responde este email si quieres debatir cualquier punto de esta edición. Leemos todo.
+    </div>
+    <div class="nl-footer-links">
+      <a href="https://somosgordon.com">somosgordon.com</a>
+      <a href="{{ unsubscribe_url }}">Cancelar suscripción</a>
+      <a href="#">Política de privacidad</a>
+      <a href="#">@Instagram</a>
+    </div>
+    <div class="nl-footer-address">
+      {{ address }}
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
