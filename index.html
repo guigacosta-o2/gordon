@@ -246,7 +246,7 @@ label: '#003', date: '2 JUL 2026', read: '7 MIN',
     const grid = document.getElementById('editions-grid');
     if (grid) {
       grid.innerHTML = editions.map((e) => {
-        return '<a href="' + e.file + '" style="display:block;background:#1c1c1c;padding:28px 24px;text-decoration:none;color:#F1ECDF;transition:background 0.15s;" onmouseover="this.style.background='#252525'" onmouseout="this.style.background='#1c1c1c'">' +
+        return '<a href="' + e.file + '" style="display:block;background:#1c1c1c;padding:28px 24px;text-decoration:none;color:#F1ECDF;transition:background 0.15s;" onmouseover=\"this.style.background=\'#252525\'\" onmouseout=\"this.style.background=\'#1c1c1c\'\">' +
           '<div style="display:flex;gap:12px;align-items:center;font-size:10px;letter-spacing:0.2em;color:#B8A071;margin-bottom:12px;">' +
           '<span>' + e.label + '</span><span>·</span><span>' + e.date + '</span><span>·</span><span>' + e.read + ' MIN</span>' +
           '</div>' +
