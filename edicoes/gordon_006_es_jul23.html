@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  GORDON — EDICIÓN #006 — 23/07/2026
+  Semana cubierta: 16 al 22 de julio de 2026
+  Corte de datos: cierre del miércoles 22/07/2026
+
+  SUBJECT LINE: La inflación bajó por una razón que ya no existe
+  PREHEADER: Petróleo en US$ 94, semiconductores en mercado bajista y la Fed sin herramientas. Lo que esta semana cambió para tu cartera.
+
+  PENDIENTE [VERIFICAR]: variación semanal del Nasdaq 100 — falta el
+  cierre del NDX del 15/07/2026 para calcular la base.
+  PENDIENTE [VERIFICAR]: cierre exacto USD/CLP del 22/07 (se usa el
+  rango de la jornada informado por la fuente).
+  ============================================================
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gordon — Edición #006</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #ddd; display: flex; justify-content: center; padding: 40px 16px; }
+
+.nl {
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  background: #F1EFE8;
+  color: #2C2C2A;
+  max-width: 680px;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.nl-header { background: #F1EFE8; padding: 28px 32px 20px; border-bottom: 2px solid #2C2C2A; }
+.nl-header-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.nl-logo-name { font-size: 32px; font-weight: 700; letter-spacing: 0.18em; color: #2C2C2A; line-height: 1; }
+.nl-logo-line { display: flex; align-items: center; margin-top: 5px; height: 4px; }
+.nl-logo-solid { width: 72px; height: 3px; background: #185FA5; }
+.nl-logo-dotted { width: 36px; height: 3px; border-top: 3px dotted #185FA5; }
+.nl-tagline { margin-top: 6px; font-size: 12px; color: #888780; letter-spacing: 0.04em; }
+.nl-tagline em { font-style: italic; color: #185FA5; font-weight: 500; }
+.nl-meta-right { text-align: right; font-size: 11px; color: #888780; line-height: 1.8; letter-spacing: 0.02em; }
+.nl-meta-right a { color: #185FA5; text-decoration: none; font-weight: 500; }
+.nl-social-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
+.nl-social-pill { font-size: 10px; color: #888780; border: 1px solid #888780; border-radius: 3px; padding: 1px 6px; letter-spacing: 0.06em; font-weight: 500; }
+.nl-meta-bar { display: flex; gap: 24px; margin-top: 14px; padding-top: 12px; border-top: 0.5px solid #D3D1C7; font-size: 11px; color: #888780; letter-spacing: 0.05em; flex-wrap: wrap; }
+.nl-meta-bar span { font-weight: 600; color: #2C2C2A; }
+
+.nl-markets { background: #2C2C2A; padding: 12px 32px; display: grid; grid-template-columns: repeat(6, 1fr); }
+.nl-mkt-item { text-align: center; border-right: 0.5px solid #444441; padding: 0 6px; }
+.nl-mkt-item:last-child { border-right: none; }
+.nl-mkt-label { font-size: 8px; letter-spacing: 0.07em; color: #888780; font-weight: 600; text-transform: uppercase; }
+.nl-mkt-val { font-size: 14px; font-weight: 700; color: #F1EFE8; line-height: 1.2; margin-top: 2px; }
+.nl-mkt-chg { font-size: 10px; font-weight: 500; margin-top: 1px; }
+.up { color: #4CAF82; }
+.dn { color: #E24B4A; }
+.nt { color: #888780; }
+
+.nl-body { padding: 0 32px; }
+.nl-section-label { font-size: 9px; letter-spacing: 0.18em; font-weight: 700; color: #888780; text-transform: uppercase; padding: 22px 0 10px; display: flex; align-items: center; gap: 10px; }
+.nl-section-label::after { content: ''; flex: 1; height: 0.5px; background: #D3D1C7; }
+.nl-intro { padding: 0 0 20px; font-size: 15px; line-height: 1.75; color: #2C2C2A; border-bottom: 0.5px solid #D3D1C7; }
+
+.nl-ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.nl-ab-col-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+.nl-ab-col-title.altas { color: #4CAF82; }
+.nl-ab-col-title.baixas { color: #E24B4A; }
+.nl-ab-row { display: flex; align-items: flex-start; justify-content: space-between; padding: 8px 10px; border-radius: 4px; margin-bottom: 4px; background: #fff; border: 0.5px solid #D3D1C7; }
+.nl-ab-ticker { font-size: 12px; font-weight: 700; color: #2C2C2A; letter-spacing: 0.06em; }
+.nl-ab-name { font-size: 11px; color: #888780; display: block; margin-top: 1px; line-height: 1.4; }
+.nl-ab-pct { font-size: 13px; font-weight: 700; white-space: nowrap; padding-left: 8px; }
+.nl-ab-pct.up { color: #4CAF82; }
+.nl-ab-pct.dn { color: #E24B4A; }
+.nl-ab-nota { font-size: 10px; color: #888780; margin-top: 8px; line-height: 1.5; }
+
+.nl-block { padding: 0 0 24px; border-bottom: 0.5px solid #D3D1C7; }
+.nl-block-title { font-size: 20px; font-weight: 700; line-height: 1.25; color: #2C2C2A; margin-bottom: 12px; }
+.nl-block-title .accent { color: #185FA5; }
+.nl-block-text { font-size: 14px; line-height: 1.75; color: #2C2C2A; }
+.nl-block-text p { margin-bottom: 12px; }
+.nl-block-text p:last-child { margin-bottom: 0; }
+.nl-block-text strong { font-weight: 600; }
+
+.nl-impact { margin-top: 16px; background: #EBF3FB; border-left: 3px solid #185FA5; border-radius: 0 4px 4px 0; padding: 14px 16px; }
+.nl-impact-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #185FA5; margin-bottom: 6px; }
+.nl-impact-text { font-size: 13px; line-height: 1.65; color: #185FA5; opacity: 0.85; }
+
+.nl-company-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+.nl-company-badge { background: #2C2C2A; color: #F1EFE8; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; white-space: nowrap; }
+.nl-company-ticker-big { font-size: 20px; font-weight: 700; color: #185FA5; letter-spacing: 0.04em; }
+
+.nl-fio-arrow { display: flex; flex-direction: column; gap: 6px; margin: 14px 0; padding: 14px 16px; background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; }
+.nl-fio-step { font-size: 13px; color: #2C2C2A; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+.nl-fio-arrow-icon { color: #185FA5; font-weight: 700; font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+
+.nl-pais-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.nl-pais-card { background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; padding: 12px 14px; }
+.nl-pais-nombre { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #185FA5; margin-bottom: 6px; }
+.nl-pais-text { font-size: 12.5px; color: #2C2C2A; line-height: 1.6; }
+
+.nl-watchlist { display: flex; flex-direction: column; gap: 8px; }
+.nl-watch-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: #fff; border: 0.5px solid #D3D1C7; border-radius: 4px; }
+.nl-watch-date { font-size: 10px; font-weight: 700; color: #185FA5; letter-spacing: 0.08em; min-width: 44px; padding-top: 2px; line-height: 1.4; }
+.nl-watch-text { font-size: 13px; color: #2C2C2A; line-height: 1.55; }
+
+.nl-conceito { background: #2C2C2A; border-radius: 4px; padding: 22px 24px; margin-top: 4px; }
+.nl-conceito-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #888780; margin-bottom: 10px; }
+.nl-conceito-term { font-size: 22px; font-weight: 700; color: #F1EFE8; letter-spacing: 0.04em; margin-bottom: 4px; }
+.nl-conceito-term-en { font-size: 12px; color: #185FA5; font-weight: 500; letter-spacing: 0.06em; margin-bottom: 14px; }
+.nl-conceito-def { font-size: 14px; line-height: 1.75; color: #D3D1C7; }
+.nl-conceito-def p { margin-bottom: 10px; }
+.nl-conceito-def p:last-child { margin-bottom: 0; }
+.nl-conceito-def strong { color: #F1EFE8; font-weight: 600; }
+.nl-conceito-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.nl-conceito-card { background: #3a3a38; border-radius: 4px; padding: 12px 14px; }
+.nl-conceito-card-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888780; margin-bottom: 5px; }
+.nl-conceito-card-val { font-size: 13px; color: #F1EFE8; line-height: 1.5; }
+.nl-conceito-impact { margin-top: 16px; background: #1a3a5c; border-left: 3px solid #185FA5; border-radius: 0 4px 4px 0; padding: 12px 14px; }
+.nl-conceito-impact-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #185FA5; margin-bottom: 5px; }
+.nl-conceito-impact-text { font-size: 13px; line-height: 1.65; color: #a8c8e8; }
+
+.nl-footer { padding: 20px 32px 28px; border-top: 0.5px solid #D3D1C7; margin-top: 8px; }
+.nl-footer-logo { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: #2C2C2A; margin-bottom: 8px; }
+.nl-footer-text { font-size: 11px; color: #888780; line-height: 1.65; }
+.nl-footer-links { margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+.nl-footer-links a { font-size: 11px; color: #185FA5; text-decoration: none; letter-spacing: 0.04em; }
+.nl-footer-address { margin-top: 12px; font-size: 10px; color: #888780; line-height: 1.6; }
+
+/* ============ MOBILE ============ */
+@media only screen and (max-width: 600px) {
+  body { padding: 0; background: #F1EFE8; }
+  .nl-header { padding: 22px 20px 16px; }
+  .nl-header-top { flex-direction: column; gap: 12px; margin-bottom: 6px; }
+  .nl-logo-name { font-size: 28px; }
+  .nl-meta-right { text-align: left; }
+  .nl-social-row { justify-content: flex-start; }
+  .nl-meta-bar { gap: 10px; font-size: 10px; }
+  .nl-markets { grid-template-columns: repeat(3, 1fr); padding: 12px 16px; row-gap: 12px; }
+  .nl-mkt-item:nth-child(3n) { border-right: none; }
+  .nl-mkt-item:nth-child(-n+3) { padding-bottom: 10px; border-bottom: 0.5px solid #444441; }
+  .nl-mkt-val { font-size: 13px; }
+  .nl-body { padding: 0 20px; }
+  .nl-intro { font-size: 14px; }
+  .nl-block-title { font-size: 18px; }
+  .nl-company-ticker-big { font-size: 17px; }
+  .nl-ab-grid { grid-template-columns: 1fr; gap: 16px; }
+  .nl-pais-grid { grid-template-columns: 1fr; }
+  .nl-conceito { padding: 20px; }
+  .nl-conceito-grid { grid-template-columns: 1fr; }
+  .nl-watch-item { flex-direction: column; gap: 4px; }
+  .nl-footer { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="nl">
+
+  <!-- HEADER -->
+  <div class="nl-header">
+    <div class="nl-header-top">
+      <div>
+        <div class="nl-logo-name">GORDON</div>
+        <div class="nl-logo-line">
+          <div class="nl-logo-solid"></div>
+          <div class="nl-logo-dotted"></div>
+        </div>
+        <div class="nl-tagline">Wall Street &nbsp;<em>en tus manos</em></div>
+      </div>
+      <div class="nl-meta-right">
+        <div><a href="https://somosgordon.com">somosgordon.com</a></div>
+        <div class="nl-social-row">
+          <span class="nl-social-pill">@SOMOSGORDON.NEWSLETTER</span>
+        </div>
+      </div>
+    </div>
+    <div class="nl-meta-bar">
+      EDICIÓN <span>#006</span> &nbsp;·&nbsp; JUEVES, 23 JUL 2026 &nbsp;·&nbsp; SEMANA DEL 16 AL 22 JUL &nbsp;·&nbsp; LECTURA <span>~7 MIN</span>
+    </div>
+  </div>
+
+  <!-- MERCADOS -->
+  <div class="nl-markets">
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">S&P 500</div>
+      <div class="nl-mkt-val">7.498,96</div>
+      <div class="nl-mkt-chg dn">−1,0% semana</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">Nasdaq 100</div>
+      <div class="nl-mkt-val">28.998,10</div>
+      <!-- [VERIFICAR] variación semanal del NDX -->
+      <div class="nl-mkt-chg nt">cierre 22/07</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso MXN</div>
+      <div class="nl-mkt-val">$17,40</div>
+      <div class="nl-mkt-chg nt">estable</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso ARS (venta)</div>
+      <div class="nl-mkt-val">$1.500</div>
+      <div class="nl-mkt-chg nt">sin cambios</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">USD / Peso CLP</div>
+      <div class="nl-mkt-val">$934</div>
+      <div class="nl-mkt-chg nt">+0,9% sem. · peso más débil</div>
+    </div>
+    <div class="nl-mkt-item">
+      <div class="nl-mkt-label">Petróleo Brent</div>
+      <div class="nl-mkt-val">US$ 94,07</div>
+      <div class="nl-mkt-chg up">+3,4% el miércoles</div>
+    </div>
+  </div>
+
+  <div class="nl-body">
+
+    <div class="nl-section-label">Esta semana</div>
+    <div class="nl-intro">
+      Hace nueve días la inflación estadounidense sorprendió a la baja: de 4,2% a 3,5% anual. El mercado lo celebró como un cambio de ciclo. Pero esa caída se explicaba casi por completo por la gasolina más barata — y esta semana el petróleo volvió a US$ 94 tras la undécima ronda consecutiva de ataques estadounidenses a Irán. Al mismo tiempo, los semiconductores entraron en mercado bajista y Meta empezó a negociar el alquiler de su propia capacidad de cómputo. Cuatro hechos que parecen inconexos y que en realidad cuentan una sola historia. Eso es lo que analizamos hoy.
+    </div>
+
+    <!-- ALTOS & BAJOS -->
+    <div class="nl-section-label">Altos &amp; Bajos</div>
+    <div class="nl-block">
+      <div class="nl-ab-grid">
+        <div>
+          <div class="nl-ab-col-title altas">▲ Mayores Alzas</div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">WDC</span><span class="nl-ab-name">Western Digital · se reactivaron las conversaciones de fusión con Kioxia</span></div><div class="nl-ab-pct up">+12,5%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">T</span><span class="nl-ab-name">AT&amp;T · superó estimaciones de resultados y arrastró al sector telecom</span></div><div class="nl-ab-pct up">+3,5%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">AVGO</span><span class="nl-ab-name">Broadcom · resistió el desplome del sector el miércoles</span></div><div class="nl-ab-pct up">+2,7%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">NVDA</span><span class="nl-ab-name">Nvidia · el único nombre del sector que resistió la semana completa</span></div><div class="nl-ab-pct up">+2,3%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">JNJ</span><span class="nl-ab-name">Johnson &amp; Johnson · refugio defensivo clásico en semanas de tensión</span></div><div class="nl-ab-pct up">+2,0%</div></div>
+        </div>
+        <div>
+          <div class="nl-ab-col-title baixas">▼ Mayores Bajas</div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">PEGA</span><span class="nl-ab-name">Pegasystems · alertó que sus clientes están postergando gasto en IA</span></div><div class="nl-ab-pct dn">−16,7%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">ISRG</span><span class="nl-ab-name">Intuitive Surgical · resultados trimestrales por debajo de lo esperado</span></div><div class="nl-ab-pct dn">−10,0%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">SMH</span><span class="nl-ab-name">ETF de semiconductores · la peor semana del sector desde abril de 2025</span></div><div class="nl-ab-pct dn">−9,0%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">NFLX</span><span class="nl-ab-name">Netflix · resultados en línea, pero proyección trimestral decepcionante</span></div><div class="nl-ab-pct dn">−8,0%</div></div>
+          <div class="nl-ab-row"><div><span class="nl-ab-ticker">MU</span><span class="nl-ab-name">Micron · la china CXMT anunció una salida a bolsa de US$ 8.500 millones</span></div><div class="nl-ab-pct dn">−7,0%</div></div>
+        </div>
+      </div>
+      <div class="nl-ab-nota">Variaciones correspondientes al movimiento destacado de cada activo entre el 16 y el 22 de julio.</div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Conviene mirar la columna de la izquierda con atención: un fabricante de discos duros, una telefónica y una farmacéutica. Ese fue el podio de la semana en el mercado más tecnológico del mundo. Cuando el capital sale de la inteligencia artificial y busca refugio en compañías defensivas, no estamos ante una rotación sectorial ordinaria: estamos ante inversionistas buscando dónde protegerse. Si tu cartera está concentrada en un solo ETF tecnológico, esta semana fue un recordatorio de por qué la diversificación entre sectores importa más de lo que parece cuando todo sube.</div>
+      </div>
+    </div>
+
+    <!-- RESUMEN DE LA SEMANA -->
+    <div class="nl-section-label">Resumen de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-block-title">La inflación bajó — <span class="accent">por una razón que ya dejó de existir</span></div>
+      <div class="nl-block-text">
+        <p>El 14 de julio se publicó el índice de precios al consumidor de junio en Estados Unidos y el resultado fue mejor de lo esperado: una caída de 0,4% en el mes, la mayor en más de seis años, que llevó la inflación anual de 4,2% a 3,5%. Los titulares hablaron de un punto de inflexión. Vale detenerse en el detalle que casi ninguno mencionó: <strong>prácticamente toda esa mejora vino de la energía</strong>, con la gasolina cayendo cerca de 10%.</p>
+        <p>Dos días después, ese supuesto quedó sin base. Estados Unidos completó su <strong>undécima ronda consecutiva de ataques contra Irán</strong>, y el secretario de Estado Marco Rubio declaró que Irán no está tomando en serio las negociaciones. El Brent cerró el miércoles en <strong>US$ 94,07</strong>, su nivel más alto en más de un mes, después de superar brevemente los US$ 95 durante la jornada.</p>
+        <p>El mercado de bonos entendió la implicación antes que el mercado accionario. El rendimiento del Tesoro a 10 años subió a 4,557%, el de 30 años a 5,085% y la hipoteca estadounidense a 30 años alcanzó 6,55%, su nivel más alto en casi un año. Es decir: <strong>los inversionistas ya están descontando que el alivio de inflación de junio no se va a repetir en julio.</strong></p>
+        <p>La semana próxima se reúne la Reserva Federal. Conviene recordar quién la preside: Kevin Warsh, el primer presidente de la Fed desde 2012 que se negó a entregar su propia proyección de tasas. De los dieciocho miembros que sí la entregaron, nueve proyectaron al menos un aumento este año, ocho proyectaron estabilidad y uno proyectó un recorte. El comité está dividido exactamente por la mitad, y su presidente ha decidido no desempatar en público.</p>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Hay una lección práctica en esto que va más allá de la coyuntura: cuando un dato económico mejora, la pregunta útil no es "cuánto mejoró" sino "por qué mejoró". Una inflación que baja porque cae la energía es frágil por definición, porque la energía es el componente más volátil de todos. Para tu cartera, esto significa que la expectativa de recortes de tasas en el segundo semestre — que muchos analistas dieron por hecha hace nueve días — vuelve a ser una hipótesis, no un escenario base. Para quien estuviera considerando alargar plazos en renta fija sobre el supuesto de que las tasas bajan, la reunión de la próxima semana es el próximo dato relevante para esa evaluación.</div>
+      </div>
+    </div>
+
+    <!-- EMPRESA DE LA SEMANA -->
+    <div class="nl-section-label">Empresa de la Semana</div>
+    <div class="nl-block">
+      <div class="nl-company-header">
+        <span class="nl-company-badge">Empresa de la semana</span>
+        <span class="nl-company-ticker-big">Semiconductores &amp; Meta Platforms</span>
+      </div>
+      <div class="nl-block-title">El sector de los chips entró en mercado bajista: <span class="accent">¿corrección sana o burbuja de IA?</span></div>
+      <div class="nl-block-text">
+        <p>Primero los hechos. <strong>El índice de semiconductores de Filadelfia acumula una caída de 20% desde su récord de junio</strong>, que es la definición técnica de mercado bajista. Fue la peor semana del grupo desde abril de 2025. El efecto se propagó por todo el mundo: SK Hynix cerró 11% abajo, Kioxia cayó más de 14%, SoftBank 9,2%, Tokyo Electron 9% y Advantest 9,4%.</p>
+        <p>El detonante fue el anuncio de <strong>Moonshot AI, una empresa emergente china que presentó un modelo que, según afirma, reduce la distancia con las mejores alternativas estadounidenses</strong>. Es el mismo tipo de sorpresa que ya había ocurrido antes con otra compañía china, y sin embargo el mercado reaccionó como si fuera inconcebible. Eso, por sí solo, dice algo sobre las expectativas que estaban incorporadas en los precios.</p>
+        <p>A eso se sumaron señales incómodas desde el propio sector. TSMC reportó un trimestre mejor de lo esperado y su acción igualmente cayó, porque junto con los resultados elevó su previsión de gasto de capital. La china CXMT anunció una salida a bolsa de US$ 8.500 millones en memoria. El gobierno estadounidense volvió a discutir restricciones a la exportación de memoria de alto ancho de banda. Y el miércoles después del cierre, Alphabet cayó cerca de 5% en operaciones fuera de horario <strong>al elevar su proyección de inversión de capital</strong> — pese a reportar ingresos de nube por encima de lo esperado.</p>
+        <p>La pieza más reveladora vino del New York Times: <strong>Meta está negociando alquilar capacidad de cómputo a Anthropic, en un acuerdo que podría alcanzar los US$ 10.000 millones.</strong> Conviene leerlo dos veces. La empresa que anunció uno de los mayores planes de inversión en infraestructura de inteligencia artificial del mundo está ofreciendo esa infraestructura a terceros.</p>
+        <p>¿Es una burbuja? Esa palabra genera más calor que luz. Lo que los datos de esta semana sí muestran, con bastante claridad, es algo más específico: <strong>la capacidad instalada creció más rápido que la demanda que la justificaba.</strong> No es un juicio moral sobre la tecnología — la inteligencia artificial es real y su utilidad también. Es una observación sobre el calendario: se construyó primero y se buscaron clientes después. Históricamente, esa secuencia termina con una corrección de precios en los proveedores de infraestructura, no con el fin de la tecnología.</p>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Una caída de 20% en un sector cíclico como los semiconductores no es un evento excepcional: ocurre con regularidad y en varias ocasiones fue un punto de entrada razonable. Lo que sí cambió esta semana es el criterio con que el mercado evalúa a estas empresas. Hasta junio, anunciar una inversión multimillonaria en infraestructura de IA hacía subir la acción. Desde julio, la pregunta es quién va a pagar por usarla. Si tienes exposición a ETFs de semiconductores como SMH o SOXX, no hace falta que reacciones al gráfico — pero sí conviene saber qué proporción de tu cartera total representa esa posición. Un sector que puede caer 20% en semanas no debería ser la mayor apuesta individual de nadie.</div>
+      </div>
+    </div>
+
+    <!-- HILO CONDUCTOR -->
+    <div class="nl-section-label">Hilo Conductor</div>
+    <div class="nl-block">
+      <div class="nl-block-title">Estalla una guerra, sube el petróleo <span class="accent">y las monedas latinoamericanas aguantan mejor de lo previsto</span></div>
+      <div class="nl-block-text">
+        <p>La sabiduría convencional dice que un conflicto militar fortalece al dólar y castiga a los mercados emergentes. Esta semana no ocurrió así, y entender por qué es más útil que memorizar la regla. Sigue el hilo:</p>
+      </div>
+      <div class="nl-fio-arrow">
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span><strong>Undécima ronda de ataques a Irán</strong> → el tráfico por el Estrecho de Ormuz cae de forma considerable y los hutíes atacan buques petroleros en el Mar Rojo</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span><strong>Brent en US$ 94</strong> → el componente energético que hizo bajar la inflación de junio ahora va a empujarla en sentido contrario</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span><strong>La Fed sin margen</strong> → desaparece el espacio para recortar tasas, y los rendimientos largos estadounidenses suben (30 años en 5,085%)</span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span><strong>Pero las tasas locales son más altas todavía</strong> → el diferencial de rendimiento amortigua la presión sobre buena parte de las monedas de la región — no sobre todas, como muestra el peso chileno esta semana — y el capital internacional lo aprovecha vía <em>carry trade</em></span></div>
+        <div class="nl-fio-step"><span class="nl-fio-arrow-icon">→</span><span><strong>Y la región exporta justo lo que subió</strong> → petróleo, cobre y minerales se encarecen, mejorando los términos de intercambio de los países exportadores</span></div>
+      </div>
+      <div class="nl-pais-grid">
+        <div class="nl-pais-card">
+          <div class="nl-pais-nombre">México</div>
+          <div class="nl-pais-text">El dólar cerró el miércoles en <strong>17,396 pesos</strong>, prácticamente sin cambios en la semana y con una caída acumulada de 7,3% en doce meses. Vale señalar un dato que rara vez se comenta: las proyecciones institucionales para el cierre de 2026 se ubican entre 19,30 y 20,50 pesos. El peso lleva meses desmintiendo a ese consenso. Los factores que lo sostienen — inversión de relocalización industrial y flujos asociados al Mundial — son reales, pero conviene recordar que la fortaleza también depende de un diferencial de tasas que puede cambiar.</div>
+        </div>
+        <div class="nl-pais-card">
+          <div class="nl-pais-nombre">Argentina</div>
+          <div class="nl-pais-text">El dólar oficial cerró sin cambios en <strong>$1.450 para la compra y $1.500 para la venta</strong> en el Banco Nación. El dato relevante no es el nivel sino la textura: la volatilidad de la última semana se ubicó en torno a 43%, muy por encima del 32% anual. Un tipo de cambio que no se mueve pero cuya volatilidad se dispara suele indicar que la calma es administrada, no espontánea. Para quien ahorra en pesos, eso no es motivo de alarma inmediata, pero sí una razón para no confundir estabilidad con equilibrio.</div>
+        </div>
+        <div class="nl-pais-card">
+          <div class="nl-pais-nombre">Chile</div>
+          <div class="nl-pais-text">El dólar se ubicó cerca de los <strong>934 pesos</strong>, con un avance de 0,9% en la semana y una caída de 3,2% en doce meses. El peso chileno sigue siendo, más que cualquier otra moneda de la región, un derivado del cobre: cuando el metal sube, la moneda se aprecia. El consenso de mercado ubica el tipo de cambio en una banda de 820 a 880 pesos hacia fin de año, lo que implica un supuesto optimista sobre el precio del cobre que todavía no está confirmado.</div>
+        </div>
+        <div class="nl-pais-card">
+          <div class="nl-pais-nombre">Colombia</div>
+          <div class="nl-pais-text">Es el país de la región que más directamente se beneficia del escenario de esta semana. Un Brent en US$ 94 mejora los ingresos fiscales por exportación de crudo y alivia la cuenta externa. Pero la contracara merece atención: cuando los ingresos del país dependen del mismo factor que encarece la energía importada y presiona la inflación interna, el beneficio es parcial. El petróleo caro ayuda al presupuesto nacional antes de ayudar al presupuesto de los hogares — y no siempre llega a este último.</div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Si dolarizaste parte de tu patrimonio en los últimos meses, esta semana fue incómoda por partida doble: el dólar no se fortaleció frente a tu moneda local y la bolsa estadounidense cayó. Perder en ambos frentes al mismo tiempo es frustrante, pero no es señal de que la estrategia estuviera equivocada. La diversificación cambiaria existe para protegerte de un escenario que no ocurrió esta semana, no para maximizar el retorno de este trimestre. Lo que sí conviene revisar es la expectativa: la fortaleza actual de las monedas latinoamericanas descansa sobre un diferencial de tasas, y los diferenciales se cierran. Aportes graduales y constantes siguen siendo más sensatos que decisiones grandes tomadas en semanas como esta.</div>
+      </div>
+    </div>
+
+    <!-- FÍJATE EN ESTO -->
+    <div class="nl-section-label">Fíjate en Esto</div>
+    <div class="nl-block">
+      <div class="nl-watchlist">
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">28–29<br>JUL</div>
+          <div class="nl-watch-text"><strong>Reunión de la Reserva Federal</strong> — La expectativa es que las tasas queden sin cambios, preservando la opción de subirlas si la inflación persiste. Pero con el Brent en US$ 94, lo que importa no es la decisión sino la conferencia de prensa. Warsh eliminó la orientación futura por convicción; ahora tendrá que decir algo sobre un choque de precios que la política monetaria no puede resolver.</div>
+        </div>
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">SEM.<br>28/07</div>
+          <div class="nl-watch-text"><strong>Resultados de Microsoft, Meta y Amazon</strong> — El mercado busca evidencia de que la inversión masiva en inteligencia artificial está empezando a generar retorno. Amazon reporta el jueves 30 de julio después del cierre. Tras la reacción a la proyección de inversión de Alphabet, cualquier anuncio de gasto sin ingresos asociados será leído con severidad.</div>
+        </div>
+        <div class="nl-watch-item">
+          <div class="nl-watch-date">SEM.<br>28/07</div>
+          <div class="nl-watch-text"><strong>PIB del segundo trimestre e inflación PCE de junio</strong> — El PCE de junio todavía va a reflejar la gasolina barata, así que probablemente venga favorable. Es importante no sobreinterpretarlo: el dato que va a mostrar el efecto del petróleo actual es el de julio, que se publica recién en agosto.</div>
+        </div>
+      </div>
+      <div class="nl-impact">
+        <div class="nl-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-impact-text">Una semana con reunión de la Fed y resultados de las mayores empresas del mundo concentra mucha información en pocos días, y eso genera movimientos bruscos que rara vez son informativos. No es momento de construir posiciones grandes ni de deshacerlas por un titular. Los aportes automáticos programados existen precisamente para períodos así: su función es retirar la decisión del momento de mayor ruido. Si estabas evaluando un cambio importante en tu cartera, esperar diez días no te va a costar nada y te va a dar bastante más información.</div>
+      </div>
+    </div>
+
+    <!-- CONCEPTO DE LA SEMANA -->
+    <div class="nl-section-label">Concepto de la Semana</div>
+    <div class="nl-conceito">
+      <div class="nl-conceito-eyebrow">Un término por semana</div>
+      <div class="nl-conceito-term">Operación de Carry Trade</div>
+      <div class="nl-conceito-term-en">Carry Trade</div>
+      <div class="nl-conceito-def">
+        <p>El carry trade es una de las operaciones más simples del mercado global y también una de las más subestimadas: <strong>consiste en tomar dinero prestado donde las tasas son bajas e invertirlo donde las tasas son altas</strong>, quedándose con la diferencia. Un fondo internacional se financia en dólares al 3,50–3,75% anual, convierte esos dólares a una moneda latinoamericana con tasas de dos dígitos, invierte allí y captura el diferencial.</p>
+        <p>Esto explica la aparente contradicción de esta semana. Mientras Estados Unidos bombardeaba Irán y el petróleo subía a US$ 94 — un escenario que en teoría debería fortalecer al dólar —, varias monedas de la región se mantuvieron firmes o se apreciaron. <strong>No fue optimismo sobre las economías locales. Fue aritmética de tasas.</strong></p>
+        <p>Ahora el punto que rara vez aparece en la comunicación de las entidades financieras: <strong>el carry trade funciona bien hasta el día en que deja de funcionar, y ese día suele ser uno solo.</strong> La ganancia llega poco a poco, mes a mes, casi imperceptible. La pérdida llega de golpe, cuando muchos participantes deciden deshacer la posición en la misma jornada y el tipo de cambio se mueve varios puntos porcentuales en horas. En la industria se describe como recoger monedas frente a una aplanadora.</p>
+        <p>Para el inversionista individual la conclusión no es evitar la moneda local ni correr a comprar dólares. Es más matizada: <strong>una moneda fuerte sostenida por diferencial de tasas es una moneda fuerte prestada.</strong> Está allí mientras la Fed permanezca quieta y el banco central local mantenga tasas altas. Cuando alguno de los dos lados se mueve, el nivel actual pasa a ser historia.</p>
+      </div>
+      <div class="nl-conceito-grid">
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Tasa de la Fed</div>
+          <div class="nl-conceito-card-val">3,50–3,75%<br><span style="color:#888780; font-size:11px">Sin cambios desde diciembre de 2025</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Origen del financiamiento</div>
+          <div class="nl-conceito-card-val">Dólar<br><span style="color:#888780; font-size:11px">La moneda barata de la operación</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Destino</div>
+          <div class="nl-conceito-card-val">Monedas emergentes<br><span style="color:#888780; font-size:11px">Tasas locales de dos dígitos</span></div>
+        </div>
+        <div class="nl-conceito-card">
+          <div class="nl-conceito-card-label">Riesgo principal</div>
+          <div class="nl-conceito-card-val" style="color:#E24B4A">Reversión abrupta<br><span style="color:#888780; font-size:11px">Ganancia gradual, pérdida instantánea</span></div>
+        </div>
+      </div>
+      <div class="nl-conceito-impact">
+        <div class="nl-conceito-impact-label">Qué impacto tiene esto en ti</div>
+        <div class="nl-conceito-impact-text">La próxima vez que leas que tu moneda "se fortaleció" o que "el dólar perdió terreno", vale la pena preguntar por qué. Si la respuesta es diferencial de tasas y no mejora productiva, exportaciones o disciplina fiscal, entonces se trata de una fortaleza que depende de decisiones tomadas fuera de tu país. Eso no la vuelve falsa ni obliga a actuar de inmediato — pero sí explica por qué el argumento a favor de mantener parte del patrimonio en moneda fuerte no se debilita cuando el tipo de cambio baja. Justamente cuando parece innecesaria es cuando resulta más barata de construir.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="nl-footer">
+    <div class="nl-footer-logo">GORDON</div>
+    <div class="nl-footer-text">
+      Gordon es una publicación editorial independiente. No somos una corredora de bolsa, no tenemos producto para vender y no recibimos comisión de ninguna plataforma. Cuando recomendamos algo, es porque tiene sentido para ti — no para nosotros.<br><br>
+      Responde este correo si quieres discutir cualquier punto de esta edición. Leemos todo.
+    </div>
+    <div class="nl-footer-links">
+      <a href="https://somosgordon.com">somosgordon.com</a>
+      <a href="{{ unsubscribe_url }}">Cancelar suscripción</a>
+      <a href="https://somosgordon.com/privacidad">Política de privacidad</a>
+      <a href="https://instagram.com/somosgordon.newsletter">@somosgordon.newsletter</a>
+    </div>
+    <div class="nl-footer-address">
+      {{ address }}
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
